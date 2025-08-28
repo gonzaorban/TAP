@@ -1,3 +1,3 @@
 # TAP
 Ejercicios de la competencia TAP.
-Pude subir los ultimos que eran los mas dificiles que no nos dieron por valido del todo, los mas faciles los perdi ja.
+Recopile algunos ejercicios que hicimos para practicar de 2024 y algunos de los que nos tocaron en 2025
