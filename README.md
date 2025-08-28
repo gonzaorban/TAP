@@ -1,8 +1,6 @@
 # TAP
 Ejercicios de la competencia TAP.  
 Recopilé algunos ejercicios que hicimos para practicar en 2024 y algunos de los que nos tocaron en 2025.
-holaa  
-hola
 
 | Año  | Enunciado                                                                                                    | Envío de soluciones                                |
 |------|--------------------------------------------------------------------------------------------------------------|---------------------------------------------------|
