@@ -1,6 +1,7 @@
 # TAP
 Ejercicios de la competencia TAP.  
-Recopilé algunos ejercicios que hicimos para practicar en 2024 y algunos de los que nos tocaron en 2025.
+Recopilé algunos ejercicios que hicimos para practicar en 2024 y algunos de los que nos tocaron en 2025.  
+Todos realizados en Python.
 
 | Año  | Enunciado                                                                                                    | Envío de soluciones                                |
 |------|--------------------------------------------------------------------------------------------------------------|---------------------------------------------------|
