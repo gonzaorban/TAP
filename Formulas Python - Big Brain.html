@@ -1,0 +1,2048 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chuletario Imprimible</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@600&display=swap">
+
+<style>
+:root{
+  --paper:#ffffff;
+  --card:#ffffff;
+  --ink:#12141a;
+  --ink-2:#33383f;
+  --muted:#5d6472;
+  --line:#dedcd6;
+  --line-2:#c6c4be;
+  --accent:#2f3fa8;
+  --accent-soft:#eceef9;
+  --good:#0d5f52;
+  --good-soft:#e4f1ee;
+  --warn:#8f5514;
+  --warn-soft:#f8efe2;
+  --bad:#912a25;
+  --bad-soft:#f8e8e7;
+  --code-bg:#f4f3ef;
+  --mono:"IBM Plex Mono", ui-monospace, Consolas, monospace;
+  --sans:"IBM Plex Sans", -apple-system, "Segoe UI", sans-serif;
+  --serif:"IBM Plex Serif", Georgia, serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0f1116; --card:#171a21; --ink:#e8e8ea; --ink-2:#c3c6cd;
+    --muted:#8d94a3; --line:#262a33; --line-2:#343945;
+    --accent:#94a2ff; --accent-soft:#1c2138;
+    --good:#5ecfb6; --good-soft:#122a26;
+    --warn:#e0a765; --warn-soft:#2c2114;
+    --bad:#f0857f;  --bad-soft:#2e1817;
+    --code-bg:#12151b;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0f1116; --card:#171a21; --ink:#e8e8ea; --ink-2:#c3c6cd;
+  --muted:#8d94a3; --line:#262a33; --line-2:#343945;
+  --accent:#94a2ff; --accent-soft:#1c2138;
+  --good:#5ecfb6; --good-soft:#122a26;
+  --warn:#e0a765; --warn-soft:#2c2114;
+  --bad:#f0857f;  --bad-soft:#2e1817;
+  --code-bg:#12151b;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:14px;
+  line-height:1.5;
+  margin:0;
+  -webkit-font-smoothing:antialiased;
+}
+.page{max-width:860px;margin:0 auto;padding:34px 40px 90px}
+
+/* ---------- portada ---------- */
+.masthead{border-bottom:2.5px solid var(--ink);padding-bottom:15px;margin-bottom:22px}
+.kicker{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:9px;
+}
+.masthead h1{
+  font-family:var(--serif);font-size:36px;line-height:1.06;
+  margin:0 0 9px;letter-spacing:-.02em;text-wrap:balance;
+}
+.masthead p{margin:0;color:var(--muted);max-width:68ch;font-size:13.5px}
+
+.printnote{
+  border:1px solid var(--line-2);border-radius:6px;
+  padding:10px 14px;margin:0 0 24px;
+  font-size:12.5px;color:var(--ink-2);background:var(--code-bg);
+}
+.printnote b{color:var(--ink)}
+.printnote kbd{
+  font-family:var(--mono);font-size:11px;border:1px solid var(--line-2);
+  border-bottom-width:2px;border-radius:3px;padding:1px 5px;background:var(--paper);
+}
+
+/* ---------- índice ---------- */
+.toc{margin:0 0 8px}
+.toc h2{
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted);font-weight:500;
+  margin:0 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line-2);
+}
+.toc-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px 30px}
+.toc-group h3{
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);font-weight:600;margin:0 0 6px;
+}
+.toc-group ol{margin:0;padding:0;list-style:none}
+.toc-group li{margin-bottom:2px}
+.toc-group a{
+  display:flex;align-items:baseline;gap:7px;
+  color:var(--ink-2);text-decoration:none;font-size:13px;padding:1.5px 0;
+}
+.toc-group a:hover{color:var(--accent)}
+.toc-group a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.toc-num{
+  font-family:var(--mono);font-size:11px;color:var(--muted);
+  min-width:17px;font-variant-numeric:tabular-nums;
+}
+.toc-dots{flex:1;border-bottom:1px dotted var(--line-2);transform:translateY(-3px)}
+
+/* ---------- secciones ---------- */
+section{margin-bottom:34px;scroll-margin-top:14px}
+.sec-head{
+  display:flex;align-items:baseline;gap:12px;
+  border-bottom:1.5px solid var(--ink);padding-bottom:6px;margin-bottom:15px;
+}
+.sec-head h2{font-size:18px;font-weight:700;letter-spacing:-.01em;margin:0}
+.sec-head .note{font-size:12px;color:var(--muted);margin-left:auto;text-align:right}
+
+/* ---------- tarjetas ---------- */
+.grid{display:grid;gap:12px}
+.grid.two{grid-template-columns:1fr 1fr}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:6px;
+  padding:13px 15px;min-width:0;break-inside:avoid;page-break-inside:avoid;
+}
+.card h3{
+  font-family:var(--mono);font-size:13px;font-weight:600;
+  margin:0 0 3px;color:var(--ink);letter-spacing:-.01em;
+}
+.card .sub{font-size:12px;color:var(--muted);margin:0 0 9px}
+.card p{margin:8px 0 0;font-size:12.5px;color:var(--ink-2)}
+.card p strong{color:var(--ink);font-weight:600}
+
+/* ---------- código ---------- */
+pre{
+  background:var(--code-bg);border:1px solid var(--line);border-radius:4px;
+  padding:10px 12px;margin:0;overflow-x:auto;
+  font-family:var(--mono);font-size:11.5px;line-height:1.5;color:var(--ink);tab-size:4;
+}
+code{font-family:var(--mono);font-size:.92em}
+p code, li code, td code{
+  background:var(--code-bg);border:1px solid var(--line);
+  border-radius:3px;padding:.5px 3.5px;
+}
+.cmt{color:var(--muted)}
+
+/* ---------- badges ---------- */
+.badges{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+.badge{
+  font-family:var(--mono);font-size:10.5px;font-weight:500;
+  padding:2px 7px;border-radius:3px;border:1px solid transparent;white-space:nowrap;
+}
+.b-good{background:var(--good-soft);color:var(--good);border-color:currentColor}
+.b-warn{background:var(--warn-soft);color:var(--warn);border-color:currentColor}
+.b-bad{background:var(--bad-soft);color:var(--bad);border-color:currentColor}
+.b-neutral{background:var(--accent-soft);color:var(--accent);border-color:currentColor}
+
+/* ---------- tablas ---------- */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+th,td{text-align:left;padding:7px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+th{
+  font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;background:var(--code-bg);white-space:nowrap;
+}
+tbody tr:last-child td{border-bottom:none}
+td.num{font-variant-numeric:tabular-nums;font-family:var(--mono);white-space:nowrap}
+
+/* ---------- callouts ---------- */
+.callout{
+  border-left:3px solid var(--accent);background:var(--accent-soft);
+  padding:10px 13px;border-radius:0 4px 4px 0;font-size:12.5px;margin:13px 0;
+  break-inside:avoid;page-break-inside:avoid;
+}
+.callout.warn{border-left-color:var(--warn);background:var(--warn-soft)}
+.callout.bad{border-left-color:var(--bad);background:var(--bad-soft)}
+.callout strong{font-weight:600}
+.callout p{margin:0}
+.callout p + p{margin-top:6px}
+
+ul.tight{margin:8px 0 0;padding-left:18px;font-size:12.5px;color:var(--ink-2)}
+ul.tight li{margin-bottom:3px}
+.src{
+  font-family:var(--mono);font-size:10.5px;color:var(--muted);
+  margin-top:8px;padding-top:7px;border-top:1px dashed var(--line-2);
+}
+.src b{color:var(--accent);font-weight:500}
+
+@media (max-width:760px){
+  .page{padding:22px 18px 60px}
+  .grid.two{grid-template-columns:1fr}
+  .masthead h1{font-size:28px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ================= IMPRESIÓN ================= */
+@page{size:A4 portrait;margin:11mm 10mm}
+
+@media print{
+  /* forzar paleta clara en papel, pase lo que pase */
+  :root, :root[data-theme="dark"], :root:not([data-theme="light"]){
+    --paper:#ffffff; --card:#ffffff; --ink:#000000; --ink-2:#1c1f24;
+    --muted:#4a505c; --line:#c9c7c1; --line-2:#a8a6a0;
+    --accent:#1f2d8a; --accent-soft:#eef0fa;
+    --good:#0a4a40; --good-soft:#e8f3f0;
+    --warn:#7a4610; --warn-soft:#faf1e4;
+    --bad:#7d211d;  --bad-soft:#fae9e8;
+    --code-bg:#f2f1ed;
+  }
+  html,body{background:#fff}
+  body{font-size:8.4pt;line-height:1.42}
+  .page{max-width:none;padding:0;margin:0}
+
+  /* que los fondos de badges y código realmente se impriman */
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+
+  .printnote{display:none}
+
+  .masthead{margin-bottom:11px;padding-bottom:9px;border-bottom-width:2pt}
+  .masthead h1{font-size:22pt;margin-bottom:5px}
+  .masthead p{font-size:8pt}
+  .kicker{font-size:7pt;margin-bottom:5px}
+
+  /* el índice ocupa su propia página */
+  .toc{break-after:page;page-break-after:always;margin-bottom:0}
+  .toc-groups{grid-template-columns:1fr 1fr;gap:11px 26px}
+  .toc-group a{font-size:8.2pt}
+  .toc-group a:hover{color:var(--ink-2)}
+
+  /* dos columnas reales en papel */
+  .grid.two{grid-template-columns:1fr 1fr;gap:7px}
+  .grid{gap:7px}
+
+  section{margin-bottom:14px;break-inside:auto}
+  .sec-head{
+    break-after:avoid;page-break-after:avoid;
+    margin-bottom:8px;padding-bottom:4px;border-bottom-width:1.2pt;
+  }
+  .sec-head h2{font-size:12pt}
+  .sec-head .note{font-size:7.4pt}
+
+  .card{padding:8px 10px;border-color:var(--line-2)}
+  .card h3{font-size:8.8pt}
+  .card .sub{font-size:7.6pt;margin-bottom:6px}
+  .card p{font-size:7.9pt;margin-top:6px}
+
+  pre{
+    font-size:7.1pt;line-height:1.4;padding:7px 8px;
+    overflow:visible;white-space:pre-wrap;word-break:break-word;
+    border-color:var(--line-2);
+  }
+  .badge{font-size:6.9pt;padding:1px 5px}
+  .badges{gap:4px;margin-top:7px}
+  .src{font-size:7pt;margin-top:6px;padding-top:5px}
+
+  .tw{overflow:visible;border-color:var(--line-2)}
+  table{font-size:7.6pt}
+  th,td{padding:4px 7px}
+  th{font-size:6.9pt}
+  thead{display:table-header-group}   /* repetir cabecera en cada página */
+  tr{break-inside:avoid;page-break-inside:avoid}
+
+  .callout{font-size:7.9pt;padding:7px 10px;margin:9px 0}
+
+  a{text-decoration:none;color:inherit}
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+<header class="masthead">
+  <div class="kicker">Python · ICPC / TAP</div>
+  <h1>Chuletario Competitivo</h1>
+  <p>Funciones, patrones y complejidades para resolver rápido y sin TLE. Cada bloque trae el código listo para copiar, cómo funciona por dentro, y qué cuesta en tiempo y memoria. Los ejemplos salen de los problemas resueltos en <code>TAP 2023–2025</code> e <code>ICPC Latin American</code>.</p>
+</header>
+
+<div class="printnote">
+  <b>Para imprimir o exportar a PDF:</b> abrí el menú de impresión con <kbd>Ctrl</kbd>+<kbd>P</kbd> (o <kbd>Cmd</kbd>+<kbd>P</kbd>) y elegí <b>Guardar como PDF</b> en el destino. Está preparado para A4 vertical: activá <b>Gráficos de fondo</b> en las opciones para que salgan los sombreados del código y las etiquetas de complejidad. Este recuadro no se imprime.
+</div>
+
+<nav class="toc">
+  <h2>Índice</h2>
+  <div class="toc-groups">
+
+    <div class="toc-group">
+      <h3>Base</h3>
+      <ol>
+        <li><a href="#io"><span class="toc-num">1</span> Entrada y salida <span class="toc-dots"></span></a></li>
+        <li><a href="#tabla"><span class="toc-num">2</span> Qué complejidad te entra <span class="toc-dots"></span></a></li>
+        <li><a href="#basico"><span class="toc-num">3</span> Manejo básico <span class="toc-dots"></span></a></li>
+      </ol>
+    </div>
+
+    <div class="toc-group">
+      <h3>Estructuras</h3>
+      <ol>
+        <li><a href="#listas"><span class="toc-num">4</span> Listas y ordenamiento <span class="toc-dots"></span></a></li>
+        <li><a href="#dict"><span class="toc-num">5</span> Dict, set y Counter <span class="toc-dots"></span></a></li>
+        <li><a href="#heap"><span class="toc-num">6</span> Heap y deque <span class="toc-dots"></span></a></li>
+      </ol>
+    </div>
+
+    <div class="toc-group">
+      <h3>Técnicas</h3>
+      <ol>
+        <li><a href="#prefix"><span class="toc-num">7</span> Sumas acumuladas <span class="toc-dots"></span></a></li>
+        <li><a href="#bisect"><span class="toc-num">8</span> Búsqueda binaria <span class="toc-dots"></span></a></li>
+        <li><a href="#dosp"><span class="toc-num">9</span> Dos punteros <span class="toc-dots"></span></a></li>
+        <li><a href="#greedy"><span class="toc-num">10</span> Greedy y barridos <span class="toc-dots"></span></a></li>
+      </ol>
+    </div>
+
+    <div class="toc-group">
+      <h3>Matemática</h3>
+      <ol>
+        <li><a href="#mate"><span class="toc-num">11</span> Aritmética <span class="toc-dots"></span></a></li>
+        <li><a href="#divisores"><span class="toc-num">12</span> Divisores y primos <span class="toc-dots"></span></a></li>
+        <li><a href="#bits"><span class="toc-num">13</span> Operaciones con bits <span class="toc-dots"></span></a></li>
+        <li><a href="#geo"><span class="toc-num">14</span> Geometría <span class="toc-dots"></span></a></li>
+      </ol>
+    </div>
+
+    <div class="toc-group">
+      <h3>Avanzado</h3>
+      <ol>
+        <li><a href="#strings"><span class="toc-num">15</span> Strings <span class="toc-dots"></span></a></li>
+        <li><a href="#grafos"><span class="toc-num">16</span> Grafos <span class="toc-dots"></span></a></li>
+        <li><a href="#dp"><span class="toc-num">17</span> Programación dinámica <span class="toc-dots"></span></a></li>
+        <li><a href="#dsu"><span class="toc-num">18</span> Union-Find (DSU) <span class="toc-dots"></span></a></li>
+      </ol>
+    </div>
+
+    <div class="toc-group">
+      <h3>Cierre</h3>
+      <ol>
+        <li><a href="#tle"><span class="toc-num">19</span> Combatir el TLE <span class="toc-dots"></span></a></li>
+        <li><a href="#trampas"><span class="toc-num">20</span> Trampas frecuentes <span class="toc-dots"></span></a></li>
+        <li><a href="#plantilla"><span class="toc-num">21</span> Plantilla base <span class="toc-dots"></span></a></li>
+      </ol>
+    </div>
+
+  </div>
+</nav>
+
+<section id="io">
+  <div class="sec-head">
+    <h2>1 · Entrada y salida</h2>
+    <div class="note">Lo primero que causa TLE en Python</div>
+  </div>
+
+  <div class="callout bad">
+    <p><strong>La regla de oro.</strong> <code>input()</code> nativo es <em>lento</em>. Con más de ~10.000 líneas ya te cuesta segundos. En tu <code>A - Alfajores.py</code> el TLE en el test 28 fue exactamente esto. Usá siempre <code>sys.stdin.buffer.read()</code>.</p>
+  </div>
+
+  <div class="grid two">
+
+    <div class="card">
+      <h3>sys.stdin.buffer.read().split()</h3>
+      <p class="sub">Lee TODA la entrada de una sola vez</p>
+<pre><span class="cmt"># La forma más rápida que existe en Python</span>
+import sys
+data = sys.stdin.buffer.read().split()
+
+n = int(data[0])
+m = int(data[1])
+v = list(map(int, data[2:2+n]))
+o = list(map(int, data[2+n:2+n+m]))</pre>
+      <p><strong>Cómo funciona:</strong> <code>.buffer</code> lee bytes crudos sin decodificar a texto (ahorra ~30%). <code>.read()</code> trae todo el stdin en una sola llamada al sistema operativo en lugar de una por línea. <code>.split()</code> parte por cualquier espacio o salto de línea, así que <strong>no importa cómo estén distribuidos los números en las líneas</strong>.</p>
+      <div class="badges">
+        <span class="badge b-good">Tiempo O(T) sobre el total de bytes</span>
+        <span class="badge b-warn">Memoria O(T)</span>
+      </div>
+      <div class="src">Usado en: <b>A - Alfajores</b>, <b>K - Kings Conquest</b></div>
+    </div>
+
+    <div class="card">
+      <h3>Iterador con map + next</h3>
+      <p class="sub">Cuando el formato es irregular</p>
+<pre>import sys
+def main():
+    data = sys.stdin.buffer.read().split()
+    it = map(int, data)          <span class="cmt"># lazy</span>
+
+    n = next(it)                  <span class="cmt"># 1ra fila</span>
+    w, l, tx, ty = (next(it) for _ in range(4))
+
+    for _ in range(n):            <span class="cmt"># pares</span>
+        x, y = next(it), next(it)
+
+main()</pre>
+      <p><strong>Cómo funciona:</strong> <code>map</code> es perezoso: no convierte todo a int de golpe, sino a medida que pedís con <code>next()</code>. Ideal cuando la entrada mezcla formatos (una fila con 1 número, otra con 4, después pares).</p>
+      <div class="badges">
+        <span class="badge b-good">O(1) amortizado por valor</span>
+        <span class="badge b-good">Memoria: no duplica la lista de ints</span>
+      </div>
+      <div class="src">Ideal para: <b>F - Cold day at the beach</b></div>
+    </div>
+
+    <div class="card">
+      <h3>Salida acumulada</h3>
+      <p class="sub">Un solo write al final</p>
+<pre>import sys
+salida = []
+for ...:
+    salida.append(str(resultado))
+
+<span class="cmt"># separado por espacios</span>
+sys.stdout.write(' '.join(salida))
+
+<span class="cmt"># uno por línea</span>
+sys.stdout.write('\n'.join(salida) + '\n')</pre>
+      <p><strong>Cómo funciona:</strong> cada <code>print()</code> hace un flush al sistema operativo. Con 10⁵ prints eso son 10⁵ syscalls. Acumular en lista y hacer <strong>un solo</strong> <code>write</code> convierte eso en 1 syscall.</p>
+      <div class="badges">
+        <span class="badge b-good">O(n) total</span>
+        <span class="badge b-bad">print() en loop: 10–50× más lento</span>
+      </div>
+      <div class="src">Usado en: <b>A - Alfajores</b>, <b>I - Inés y sus compitas</b></div>
+    </div>
+
+    <div class="card">
+      <h3>Formatos de salida</h3>
+      <p class="sub">Los que más aparecen</p>
+<pre>lista = [3, 0, 5]
+
+print(' '.join(map(str, lista)))  <span class="cmt"># 3 0 5</span>
+print(*lista)                     <span class="cmt"># 3 0 5  (igual)</span>
+print(*lista, sep='\n')           <span class="cmt"># uno por línea</span>
+
+<span class="cmt"># decimales: 6 cifras</span>
+print(f"{dist:.6f}")
+
+<span class="cmt"># CUIDADO: print(a," ",b) mete espacios dobles</span>
+print("A", cant)                  <span class="cmt"># correcto: A 3</span></pre>
+      <p><strong>Cómo funciona:</strong> <code>' '.join</code> necesita strings, por eso el <code>map(str, ...)</code>. <code>print(*lista)</code> desempaqueta la lista como argumentos y print ya separa con espacio por defecto — hace lo mismo con menos código.</p>
+      <div class="badges"><span class="badge b-good">O(n)</span></div>
+      <div class="src">Ojo en: <b>F - Cold day</b> imprimía <code>print("A"," ",a)</code> → "A   3"</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 2. TABLA ============ -->
+<section id="tabla">
+  <div class="sec-head">
+    <h2>2 · Qué complejidad te entra</h2>
+    <div class="note">Python ≈ 10⁷ operaciones simples por segundo</div>
+  </div>
+
+  <p style="color:var(--muted);font-size:13.5px;margin:0 0 14px;max-width:70ch">Mirá <code>n</code> en el enunciado <em>antes</em> de escribir código. Esta tabla te dice qué algoritmo podés permitirte con un límite típico de 1–2 segundos.</p>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>n hasta</th><th>Complejidad viable</th><th>Qué usar</th><th>Veredicto</th></tr></thead>
+      <tbody>
+        <tr><td class="num">10</td><td class="num">O(n!) / O(2ⁿ·n)</td><td>fuerza bruta, permutaciones</td><td><span class="badge b-good">libre</span></td></tr>
+        <tr><td class="num">20–25</td><td class="num">O(2ⁿ)</td><td>subconjuntos con bitmask, meet-in-the-middle</td><td><span class="badge b-good">ok</span></td></tr>
+        <tr><td class="num">100</td><td class="num">O(n³)</td><td>Floyd–Warshall, DP de intervalos</td><td><span class="badge b-good">ok</span></td></tr>
+        <tr><td class="num">1.000</td><td class="num">O(n²)</td><td>DP 2D, doble for</td><td><span class="badge b-good">ok</span></td></tr>
+        <tr><td class="num">5.000</td><td class="num">O(n²)</td><td>doble for — al límite en Python</td><td><span class="badge b-warn">justo</span></td></tr>
+        <tr><td class="num">10⁵</td><td class="num">O(n log n)</td><td><strong>sort, bisect, heap, set</strong></td><td><span class="badge b-good">el caso típico</span></td></tr>
+        <tr><td class="num">10⁶</td><td class="num">O(n)</td><td>un solo barrido, prefix sums, contadores</td><td><span class="badge b-good">ok</span></td></tr>
+        <tr><td class="num">10⁷</td><td class="num">O(n)</td><td>solo con builtins en C (<code>sum</code>, <code>Counter</code>)</td><td><span class="badge b-warn">al límite</span></td></tr>
+        <tr><td class="num">10⁹+</td><td class="num">O(log n) / O(1)</td><td>fórmula cerrada, binaria sobre la respuesta</td><td><span class="badge b-neutral">matemática</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout warn">
+    <p><strong>Regla práctica en Python:</strong> si tu <code>n</code> es 10⁵ y estás escribiendo un <code>for</code> dentro de otro <code>for</code>, ya perdiste. Buscá cómo bajar a <code>O(n log n)</code>: ordenar, bisect, prefix sums, o un dict.</p>
+  </div>
+</section>
+
+<!-- ============ 3. BASICO ============ -->
+<section id="basico">
+  <div class="sec-head">
+    <h2>3 · Manejo básico</h2>
+    <div class="note">Lo que usás en todos los problemas fáciles</div>
+  </div>
+
+  <div class="grid two">
+
+    <div class="card">
+      <h3>map, min, max, sum</h3>
+      <p class="sub">Builtins que corren en C — siempre preferilos</p>
+<pre>a, b, c = map(int, input().split())
+
+mayor  = max(a, b, c)
+menor  = min(a, b, c)
+medio  = a + b + c - mayor - menor  <span class="cmt"># truco</span>
+
+total  = sum(lista)
+mx     = max(lista)
+mn     = min(lista)
+
+<span class="cmt"># max/min con clave</span>
+p = max(puntos, key=lambda p: p[1])</pre>
+      <p><strong>Cómo funciona:</strong> <code>map(int, ...)</code> aplica <code>int</code> a cada string; el desempaquetado asigna cada valor a una variable — <strong>falla si no hay exactamente 3 valores</strong>. El truco del medio: suma total menos los extremos, sin ordenar.</p>
+      <div class="badges">
+        <span class="badge b-good">min/max/sum: O(n) en C, ~5× más rápido que un for</span>
+      </div>
+      <div class="src">Usado en: <b>D - Duo</b>, <b>N - New Dimensions</b>, <b>L - Game series</b></div>
+    </div>
+
+    <div class="card">
+      <h3>Inicializar acumuladores</h3>
+      <p class="sub">Infinito y arreglos en cero</p>
+<pre>minimo = float('inf')
+maximo = float('-inf')
+
+INF = 1 &lt;&lt; 62          <span class="cmt"># más rápido, entero puro</span>
+
+<span class="cmt"># arreglo de n ceros</span>
+s = [0] * n
+s = [0] * (n + 1)      <span class="cmt"># +1 para prefix sums</span>
+
+<span class="cmt"># matriz n x m — OJO con el *</span>
+g = [[0]*m for _ in range(n)]   <span class="cmt"># bien</span>
+g = [[0]*m]*n                    <span class="cmt"># MAL: filas compartidas</span></pre>
+      <p><strong>Cómo funciona:</strong> <code>[0]*n</code> crea la lista en C, mucho más rápido que un append en loop. Pero <code>[fila]*n</code> copia la <em>referencia</em>: al modificar una fila cambian todas. Para matrices siempre usá la comprensión.</p>
+      <div class="badges">
+        <span class="badge b-good">[0]*n → O(n)</span>
+        <span class="badge b-neutral">INF entero &gt; float('inf') en velocidad</span>
+      </div>
+      <div class="src">Usado en: <b>L - Games</b>, <b>I - Inés</b>, <b>K - Kings Conquest</b></div>
+    </div>
+
+    <div class="card">
+      <h3>Índices y rebanadas</h3>
+      <p class="sub">Slicing sin salirte del rango</p>
+<pre>lista[-1]        <span class="cmt"># último</span>
+lista[-2]        <span class="cmt"># anteúltimo</span>
+lista[:k]        <span class="cmt"># primeros k</span>
+lista[k:]        <span class="cmt"># desde k en adelante</span>
+lista[::-1]      <span class="cmt"># invertida (copia)</span>
+
+<span class="cmt"># slicing NO tira error si te pasás</span>
+s = "hola"
+s[2:99]          <span class="cmt"># 'la'  — no explota</span>
+
+lista.pop()      <span class="cmt"># saca el último, O(1)</span>
+lista.pop(1)     <span class="cmt"># saca índice 1, O(n)</span></pre>
+      <p><strong>Cómo funciona:</strong> el slicing recorta silenciosamente al límite. Por eso en <code>J - Judgmental Crowd</code> podés escribir <code>lista[i:i+5] == "boooo"</code> sin verificar el borde: cerca del final devuelve un string más corto que simplemente no coincide.</p>
+      <div class="badges">
+        <span class="badge b-warn">slice: O(k) — copia</span>
+        <span class="badge b-bad">pop(0): O(n) → usá deque</span>
+      </div>
+      <div class="src">Usado en: <b>J - Judgmental Crowd</b>, <b>B - Black and white</b>, <b>H - Hidden divisor</b></div>
+    </div>
+
+    <div class="card">
+      <h3>enumerate, zip, range</h3>
+      <p class="sub">Recorrer sin índices manuales</p>
+<pre><span class="cmt"># índice + valor a la vez</span>
+for i, a in enumerate(lista):
+    v = (a + i) % n
+
+<span class="cmt"># dos listas en paralelo</span>
+for r, c in zip(filas, cols):
+    ...
+
+<span class="cmt"># rango hacia atrás</span>
+for i in range(n-1, -1, -1):
+    ...
+
+<span class="cmt"># de a pares sobre lista plana</span>
+filas = nums[0::2]   <span class="cmt"># pares</span>
+cols  = nums[1::2]   <span class="cmt"># impares</span></pre>
+      <p><strong>Cómo funciona:</strong> <code>enumerate</code> y <code>zip</code> son iteradores en C — más rápidos que <code>for i in range(len(x))</code> con indexado manual, porque evitan una operación de índice por vuelta.</p>
+      <div class="badges">
+        <span class="badge b-good">O(n), sin copia extra</span>
+        <span class="badge b-warn">nums[0::2] sí copia: O(n)</span>
+      </div>
+      <div class="src">Usado en: <b>C - Circularly</b>, <b>K - Kings Conquest</b></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 4. LISTAS ============ -->
+<section id="listas">
+  <div class="sec-head">
+    <h2>4 · Listas, tuplas y ordenamiento</h2>
+    <div class="note">Timsort: el caballito de batalla</div>
+  </div>
+
+  <div class="grid two">
+
+    <div class="card">
+      <h3>sort() vs sorted()</h3>
+      <p class="sub">In-place o copia nueva</p>
+<pre>lista.sort()                  <span class="cmt"># in-place, devuelve None</span>
+nueva = sorted(lista)         <span class="cmt"># copia ordenada</span>
+
+lista.sort(reverse=True)      <span class="cmt"># descendente</span>
+
+<span class="cmt"># ordenar por un campo de la tupla</span>
+puntos.sort(key=lambda p: p[0])   <span class="cmt"># por x</span>
+puntos.sort(key=lambda p: p[1])   <span class="cmt"># por y</span>
+
+<span class="cmt"># por dos criterios: x asc, y desc</span>
+puntos.sort(key=lambda p: (p[0], -p[1]))</pre>
+      <p><strong>Cómo funciona:</strong> Timsort es estable — los empates conservan su orden original. Eso te deja <strong>ordenar por criterios encadenados</strong>: ordená primero por el criterio secundario y después por el principal. <code>sort()</code> no devuelve nada, así que <code>x = lista.sort()</code> te deja <code>None</code>.</p>
+      <div class="badges">
+        <span class="badge b-good">O(n log n)</span>
+        <span class="badge b-good">sort(): memoria O(1) extra</span>
+        <span class="badge b-warn">sorted(): memoria O(n)</span>
+      </div>
+      <div class="src">Usado en: <b>C - Chromatic</b>, <b>H - Hidden divisor</b>, <b>F - Cold day</b></div>
+    </div>
+
+    <div class="card">
+      <h3>Ordenar tuplas sin key</h3>
+      <p class="sub">Python compara elemento por elemento</p>
+<pre>pares = [(3, 1), (1, 5), (1, 2)]
+pares.sort()
+<span class="cmt"># [(1, 2), (1, 5), (3, 1)]</span>
+<span class="cmt"># compara [0]; si empata, compara [1]</span>
+
+<span class="cmt"># truco: armá la tupla con lo que querés</span>
+umbrales = sorted((dh - dv, dv, dh)
+                  for dv, dh in pares)</pre>
+      <p><strong>Cómo funciona:</strong> ordenar tuplas sin <code>key</code> es <strong>más rápido</strong> que con lambda, porque la comparación ocurre entera en C sin llamar a Python. Si podés construir la tupla en el orden que necesitás, hacelo.</p>
+      <div class="badges">
+        <span class="badge b-good">O(n log n), ~2× más rápido que con key=lambda</span>
+      </div>
+      <div class="src">Usado en: <b>K - Kings Conquest</b></div>
+    </div>
+
+    <div class="card">
+      <h3>count, index, in</h3>
+      <p class="sub">Búsqueda lineal — cuidado en loops</p>
+<pre>lista.count(1)         <span class="cmt"># cuántos unos</span>
+lista.index(x)         <span class="cmt"># 1ra posición (ValueError si falta)</span>
+x in lista             <span class="cmt"># O(n) en lista</span>
+x in conjunto          <span class="cmt"># O(1) en set  ← usá esto</span>
+
+<span class="cmt"># count sobre un subrango</span>
+lista[l:r].count(1)    <span class="cmt"># O(r-l) + copia</span>
+
+<span class="cmt"># en strings</span>
+texto.count('T')       <span class="cmt"># O(n), en C, rapidísimo</span></pre>
+      <p><strong>Cómo funciona:</strong> los tres recorren la lista entera. Están implementados en C así que para <em>una</em> llamada son rápidos, pero <code>count</code> dentro de un for es <code>O(n²)</code>. Si consultás muchas veces, pasá a <code>set</code> o a prefix sums.</p>
+      <div class="badges">
+        <span class="badge b-good">1 llamada: O(n) en C</span>
+        <span class="badge b-bad">dentro de un for: O(n²)</span>
+      </div>
+      <div class="src">Usado en: <b>G - Garlands</b>, <b>I - Inés</b></div>
+    </div>
+
+    <div class="card">
+      <h3>Comprensión de listas</h3>
+      <p class="sub">Más rápido que append en loop</p>
+<pre>A = [x - 1 for x in lista]              <span class="cmt"># 0-based</span>
+g = [-e for e in f]                      <span class="cmt"># negados</span>
+pares = [x for x in lista if x % 2 == 0] <span class="cmt"># filtro</span>
+
+<span class="cmt"># de strings a ints</span>
+v = [int(x) for x in datos[2:2+n]]
+v = list(map(int, datos[2:2+n]))  <span class="cmt"># más rápido aún</span>
+
+<span class="cmt"># generador: no construye la lista</span>
+total = sum(x*x for x in lista)</pre>
+      <p><strong>Cómo funciona:</strong> la comprensión evita la búsqueda del método <code>.append</code> en cada vuelta (~30% más rápida). <code>map(int, ...)</code> gana a la comprensión porque no ejecuta bytecode de Python por elemento. Un <strong>generador</strong> (paréntesis en vez de corchetes) no reserva memoria para la lista completa.</p>
+      <div class="badges">
+        <span class="badge b-good">map: el más rápido</span>
+        <span class="badge b-good">generador: memoria O(1)</span>
+      </div>
+      <div class="src">Usado en: <b>A - Alfajores</b>, <b>C - Circularly</b></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 5. DICT / SET ============ -->
+<section id="dict">
+  <div class="sec-head">
+    <h2>5 · Diccionarios, sets y Counter</h2>
+    <div class="note">O(1) promedio — tu mejor arma contra O(n²)</div>
+  </div>
+
+  <div class="grid two">
+
+    <div class="card">
+      <h3>set — pertenencia instantánea</h3>
+      <p class="sub">Convertí una lista y consultá gratis</p>
+<pre>divisor_set = set(lista)     <span class="cmt"># O(n)</span>
+
+if x in divisor_set:         <span class="cmt"># O(1) ← clave</span>
+    ...
+
+<span class="cmt"># operaciones de conjuntos</span>
+a &amp; b     <span class="cmt"># intersección</span>
+a | b     <span class="cmt"># unión</span>
+a - b     <span class="cmt"># diferencia</span>
+len(set(lista))   <span class="cmt"># cuántos distintos</span></pre>
+      <p><strong>Cómo funciona:</strong> el set es una tabla de hash. Buscar no recorre nada: calcula el hash y salta directo a la posición. Convertir una lista a set cuesta <code>O(n)</code> una sola vez y después cada consulta es constante — eso transforma un <code>O(n²)</code> en <code>O(n)</code>.</p>
+      <div class="badges">
+        <span class="badge b-good">in: O(1) promedio</span>
+        <span class="badge b-warn">Memoria ~4× la de una lista</span>
+      </div>
+      <div class="src">Usado en: <b>H - Hidden divisor</b> (buscar el divisor faltante)</div>
+    </div>
+
+    <div class="card">
+      <h3>dict con .get(clave, default)</h3>
+      <p class="sub">Sin KeyError, sin if previo</p>
+<pre>d = {}
+g = d.get              <span class="cmt"># cachear el método = más rápido</span>
+
+if dl &lt; g(du, INF):    <span class="cmt"># INF si no existe</span>
+    d[du] = dl
+
+<span class="cmt"># contar ocurrencias</span>
+cnt = {}
+for x in lista:
+    cnt[x] = cnt.get(x, 0) + 1
+
+<span class="cmt"># recorrer ordenado por clave</span>
+for k in sorted(d):
+    ...</pre>
+      <p><strong>Cómo funciona:</strong> <code>.get(k, default)</code> devuelve el default si la clave falta, sin lanzar excepción. Guardar el método en una variable (<code>g = d.get</code>) evita la búsqueda del atributo en cada vuelta — un truco real dentro de loops calientes.</p>
+      <div class="badges">
+        <span class="badge b-good">get/set: O(1) promedio</span>
+        <span class="badge b-warn">sorted(d): O(k log k)</span>
+      </div>
+      <div class="src">Usado en: <b>K - Kings Conquest</b> (4 dicts de esquinas)</div>
+    </div>
+
+    <div class="card">
+      <h3>Counter</h3>
+      <p class="sub">Contar todo de una</p>
+<pre>from collections import Counter
+
+c = Counter(lista)
+c[x]                <span class="cmt"># cuántas veces (0 si falta)</span>
+c.most_common(1)    <span class="cmt"># [(valor, cantidad)]</span>
+c.most_common()     <span class="cmt"># todos, de mayor a menor</span>
+
+<span class="cmt"># también sobre strings</span>
+c = Counter("TPAUTP")
+min(c['T'], c['P'], c['A'] + c['U'])</pre>
+      <p><strong>Cómo funciona:</strong> es un dict que devuelve <code>0</code> en vez de fallar con claves ausentes. El conteo interno está en C, así que <code>Counter(lista)</code> es más rápido que un loop manual con <code>.get</code>.</p>
+      <div class="badges">
+        <span class="badge b-good">Construcción O(n)</span>
+        <span class="badge b-warn">most_common(): O(k log k)</span>
+      </div>
+      <div class="src">Alternativa limpia para: <b>G - Garlands</b></div>
+    </div>
+
+    <div class="card">
+      <h3>defaultdict</h3>
+      <p class="sub">Para listas de adyacencia y agrupaciones</p>
+<pre>from collections import defaultdict
+
+<span class="cmt"># grafo</span>
+g = defaultdict(list)
+g[u].append(v)          <span class="cmt"># sin inicializar g[u]</span>
+
+<span class="cmt"># agrupar por clave</span>
+por_x = defaultdict(list)
+for x, y in puntos:
+    por_x[x].append(y)
+
+<span class="cmt"># contador</span>
+cnt = defaultdict(int)
+cnt[x] += 1</pre>
+      <p><strong>Cómo funciona:</strong> al pedir una clave que no existe, la crea llamando a la fábrica que le pasaste (<code>list</code> → <code>[]</code>, <code>int</code> → <code>0</code>). Te ahorra el <code>if k not in d</code> en cada inserción.</p>
+      <div class="badges"><span class="badge b-good">O(1) por operación</span></div>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <p><strong>El patrón de frecuencias.</strong> En <code>C - Circularly</code> el problema pedía contar pares que cumplen una condición. La solución <code>O(n²)</code> (comparar todos contra todos) era imposible; la <code>O(n)</code> fue: <em>primer barrido</em> construye un arreglo de frecuencias de la clase <code>(A[i]+i) % n</code>, <em>segundo barrido</em> consulta esa frecuencia. Cuando veas "contar pares que cumplen X", pensá en frecuencias.</p>
+  </div>
+</section>
+
+<!-- ============ 6. HEAP / DEQUE ============ -->
+<section id="heap">
+  <div class="sec-head">
+    <h2>6 · Heap y deque</h2>
+    <div class="note">Cuando necesitás el mínimo, o insertar por los dos lados</div>
+  </div>
+
+  <div class="grid two">
+
+    <div class="card">
+      <h3>heapq — cola de prioridad</h3>
+      <p class="sub">Mínimo siempre a mano</p>
+<pre>import heapq
+
+h = []
+heapq.heappush(h, x)        <span class="cmt"># insertar</span>
+menor = heapq.heappop(h)    <span class="cmt"># sacar el mínimo</span>
+h[0]                        <span class="cmt"># mirar sin sacar, O(1)</span>
+
+heapq.heapify(lista)        <span class="cmt"># O(n), in-place</span>
+
+<span class="cmt"># MAX-heap: negá los valores</span>
+heapq.heappush(h, -x)
+mayor = -heapq.heappop(h)
+
+<span class="cmt"># con prioridad compuesta</span>
+heapq.heappush(h, (costo, nodo))</pre>
+      <p><strong>Cómo funciona:</strong> es un árbol binario guardado en una lista plana; el hijo de <code>i</code> está en <code>2i+1</code> y <code>2i+2</code>. La raíz siempre es el mínimo. Solo hay <strong>min-heap</strong>: para máximos, negá al entrar y al salir.</p>
+      <div class="badges">
+        <span class="badge b-good">push/pop: O(log n)</span>
+        <span class="badge b-good">peek h[0]: O(1)</span>
+        <span class="badge b-good">heapify: O(n)</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>deque — cola por los dos extremos</h3>
+      <p class="sub">Reemplaza a pop(0)</p>
+<pre>from collections import deque
+
+q = deque()
+q.append(x)         <span class="cmt"># al final,    O(1)</span>
+q.appendleft(x)     <span class="cmt"># al inicio,   O(1)</span>
+q.pop()             <span class="cmt"># del final,   O(1)</span>
+q.popleft()         <span class="cmt"># del inicio,  O(1) ← clave</span>
+
+q = deque(lista)    <span class="cmt"># desde una lista</span>
+q.rotate(1)         <span class="cmt"># rota a la derecha</span></pre>
+      <p><strong>Cómo funciona:</strong> es una lista doblemente enlazada por bloques, así que insertar o sacar en cualquier extremo es constante. En una lista normal, <code>pop(0)</code> desplaza todos los elementos: <code>O(n)</code>. Con 10⁵ operaciones eso es la diferencia entre 0,01 s y 10 s.</p>
+      <div class="badges">
+        <span class="badge b-good">Ambos extremos: O(1)</span>
+        <span class="badge b-bad">Acceso al medio q[i]: O(n)</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 7. PREFIX ============ -->
+<section id="prefix">
+  <div class="sec-head">
+    <h2>7 · Sumas acumuladas (prefix sums)</h2>
+    <div class="note">Muchas consultas de rango → O(1) cada una</div>
+  </div>
+
+  <div class="grid two">
+
+    <div class="card">
+      <h3>Prefix sum 1D</h3>
+      <p class="sub">La técnica más rentable de todas</p>
+<pre><span class="cmt"># n+1 posiciones: la 0 es "cero elementos"</span>
+pre = [0] * (n + 1)
+for i in range(n):
+    pre[i+1] = pre[i] + lista[i]
+
+<span class="cmt"># suma de lista[l-1 .. r-1]  (1-based)</span>
+suma = pre[r] - pre[l-1]
+
+<span class="cmt"># suma de lista[i .. j]  (0-based)</span>
+suma = pre[j+1] - pre[i]</pre>
+      <p><strong>Cómo funciona:</strong> <code>pre[i]</code> guarda el total de los primeros <code>i</code> elementos. La suma de un rango sale de restar dos acumulados: todo hasta <code>r</code> menos todo lo anterior a <code>l</code>. El <code>+1</code> del tamaño evita tener que tratar <code>l = 0</code> como caso especial.</p>
+      <div class="badges">
+        <span class="badge b-good">Construcción: O(n)</span>
+        <span class="badge b-good">Cada consulta: O(1)</span>
+        <span class="badge b-warn">Memoria: O(n)</span>
+      </div>
+      <div class="src">Usado en: <b>L - Games</b> — 3 prefix sums en paralelo (pot2, imp, unos)</div>
+    </div>
+
+    <div class="card">
+      <h3>Varios prefix en paralelo</h3>
+      <p class="sub">Un barrido, varias categorías</p>
+<pre>pot2 = [0] * (n + 1)
+imp  = [0] * (n + 1)
+unos = [0] * (n + 1)
+
+for i in range(n):
+    x = lista[i]
+    <span class="cmt"># cada posición copia lo acumulado</span>
+    pot2[i+1] = pot2[i]
+    imp[i+1]  = imp[i]
+    unos[i+1] = unos[i]
+
+    if x == 1:                    unos[i+1] += 1
+    elif (x &amp; (x - 1)) == 0:      pot2[i+1] += x
+    elif x % 2 == 1:              imp[i+1]  += x
+
+<span class="cmt"># consulta del rango [l, r]</span>
+u = unos[r] - unos[l-1]
+a = pot2[r] - pot2[l-1]</pre>
+      <p><strong>Cómo funciona:</strong> clasificás cada elemento en una categoría y mantenés un acumulado por categoría. Con <code>q</code> consultas pasás de <code>O(n·q)</code> a <code>O(n + q)</code>.</p>
+      <div class="badges">
+        <span class="badge b-good">O(n + q) total</span>
+        <span class="badge b-bad">Sin esto: O(n·q) → TLE seguro</span>
+      </div>
+      <div class="src">Usado en: <b>L - Games</b></div>
+    </div>
+
+    <div class="card">
+      <h3>Mínimo/máximo acumulado</h3>
+      <p class="sub">Prefijo y sufijo</p>
+<pre><span class="cmt"># mínimo de los primeros i+1</span>
+pref = []
+acum = float('inf')
+for x in lista:
+    if x &lt; acum: acum = x
+    pref.append(acum)
+
+<span class="cmt"># mínimo desde i hasta el final</span>
+suf = [0] * (n + 1)
+suf[n] = float('inf')
+for i in range(n-1, -1, -1):
+    suf[i] = min(suf[i+1], lista[i])</pre>
+      <p><strong>Cómo funciona:</strong> igual que la suma, pero el operador es <code>min</code>/<code>max</code>. Sirve cuando querés partir el arreglo en dos y necesitás lo mejor de cada lado. El sufijo se llena <strong>hacia atrás</strong>.</p>
+      <div class="badges">
+        <span class="badge b-good">O(n) construcción, O(1) consulta</span>
+      </div>
+      <div class="src">Usado en: <b>K - Kings Conquest</b> (<code>pref_dh</code>, <code>suf_dh</code>)</div>
+    </div>
+
+    <div class="card">
+      <h3>Diferencias (range update)</h3>
+      <p class="sub">Sumar en muchos rangos, leer al final</p>
+<pre>dif = [0] * (n + 2)
+
+<span class="cmt"># sumar v a todo el rango [l, r]</span>
+dif[l]   += v
+dif[r+1] -= v
+
+<span class="cmt"># reconstruir el arreglo final</span>
+actual = 0
+res = []
+for i in range(n):
+    actual += dif[i]
+    res.append(actual)</pre>
+      <p><strong>Cómo funciona:</strong> el inverso del prefix sum. Marcás dónde empieza y dónde termina cada suma; al recorrer acumulando, el efecto se "enciende" en <code>l</code> y se "apaga" en <code>r+1</code>. Con <code>q</code> actualizaciones: <code>O(q + n)</code> en vez de <code>O(q·n)</code>.</p>
+      <div class="badges">
+        <span class="badge b-good">Update: O(1)</span>
+        <span class="badge b-good">Reconstrucción final: O(n)</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 8. BISECT ============ -->
+<section id="bisect">
+  <div class="sec-head">
+    <h2>8 · Búsqueda binaria</h2>
+    <div class="note">Requisito: la lista tiene que estar ordenada</div>
+  </div>
+
+  <div class="grid two">
+
+    <div class="card">
+      <h3>bisect_left / bisect_right</h3>
+      <p class="sub">Contar cuántos son menores</p>
+<pre>from bisect import bisect_left, bisect_right
+
+B.sort()                    <span class="cmt"># O(m log m), obligatorio</span>
+
+for x in A:                 <span class="cmt"># O(n log m)</span>
+    menores    = bisect_left(B, x)   <span class="cmt"># cuántos &lt; x</span>
+    menores_ig = bisect_right(B, x)  <span class="cmt"># cuántos &lt;= x</span>
+    iguales    = bisect_right(B,x) - bisect_left(B,x)
+
+<span class="cmt"># buscar solo desde cierta posición</span>
+j = bisect_left(B, x, desde)</pre>
+      <p><strong>Cómo funciona:</strong> <code>bisect_left</code> devuelve la posición donde <em>insertarías</em> <code>x</code> manteniendo el orden, a la izquierda de los iguales. Esa posición <strong>es exactamente la cantidad de elementos estrictamente menores</strong>. <code>bisect_right</code> inserta a la derecha, así que cuenta los <code>&lt;= x</code>.</p>
+      <div class="badges">
+        <span class="badge b-good">Cada búsqueda: O(log n)</span>
+        <span class="badge b-warn">+ sort inicial: O(n log n)</span>
+      </div>
+      <div class="src">Usado en: <b>A - Alfajores</b>, <b>K - Kings Conquest</b></div>
+    </div>
+
+    <div class="card">
+      <h3>Buscar en lista descendente</h3>
+      <p class="sub">El truco de negar</p>
+<pre><span class="cmt"># f está ordenada DESCENDENTE</span>
+<span class="cmt"># bisect solo funciona sobre ascendentes</span>
+
+g = [-e for e in f]     <span class="cmt"># ahora es ascendente</span>
+                        <span class="cmt"># y conserva los MISMOS índices</span>
+
+<span class="cmt"># "f[j] &lt;= r"  equivale a  "g[j] &gt;= -r"</span>
+<span class="cmt"># y "primera posición con valor &gt;= x" es bisect_left</span>
+j = bisect_left(g, -r, desde)</pre>
+      <p><strong>Cómo funciona:</strong> negar invierte el orden pero <strong>no mueve los índices</strong>, así que el índice que devuelve bisect sobre <code>g</code> sirve tal cual para indexar <code>f</code>. Es más barato que mantener dos listas o escribir tu propia binaria.</p>
+      <div class="badges"><span class="badge b-good">O(log n) por consulta</span></div>
+      <div class="src">Usado en: <b>A - Alfajores</b></div>
+    </div>
+
+    <div class="card">
+      <h3>insort — insertar ordenado</h3>
+      <p class="sub">Mantener una lista siempre ordenada</p>
+<pre>from bisect import insort
+
+insort(lista, x)     <span class="cmt"># inserta en su posición</span></pre>
+      <p><strong>Cómo funciona:</strong> encuentra la posición en <code>O(log n)</code>, pero <strong>insertar desplaza</strong> todos los elementos siguientes: <code>O(n)</code>. Para pocas inserciones está bien; para muchas, acumulá todo y ordená una sola vez al final.</p>
+      <div class="badges">
+        <span class="badge b-warn">O(n) por inserción (el desplazamiento manda)</span>
+        <span class="badge b-good">n inserciones sueltas &lt; acumular + sort</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Binaria sobre la respuesta</h3>
+      <p class="sub">"¿El mínimo valor tal que...?"</p>
+<pre>def alcanza(x):
+    <span class="cmt"># True si x es suficiente</span>
+    ...
+
+lo, hi = 0, 10**18
+while lo &lt; hi:
+    mid = (lo + hi) // 2
+    if alcanza(mid):
+        hi = mid          <span class="cmt"># probá más chico</span>
+    else:
+        lo = mid + 1      <span class="cmt"># hace falta más</span>
+print(lo)</pre>
+      <p><strong>Cómo funciona:</strong> aplica cuando la respuesta es <strong>monótona</strong>: si <code>x</code> alcanza, todo <code>&gt; x</code> también. En vez de probar cada valor, partís el rango a la mitad. Con <code>hi = 10¹⁸</code> son solo ~60 iteraciones.</p>
+      <div class="badges">
+        <span class="badge b-good">O(log(rango) · costo de alcanza)</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 9. DOS PUNTEROS ============ -->
+<section id="dosp">
+  <div class="sec-head">
+    <h2>9 · Dos punteros y ventana deslizante</h2>
+    <div class="note">Bajar O(n²) a O(n) sin estructuras extra</div>
+  </div>
+
+  <div class="grid two">
+
+    <div class="card">
+      <h3>Dos punteros desde los extremos</h3>
+      <p class="sub">Sobre lista ordenada</p>
+<pre>lista.sort()
+i, j = 0, len(lista) - 1
+
+while i &lt; j:
+    s = lista[i] + lista[j]
+    if s == objetivo:
+        <span class="cmt"># encontrado</span>
+        i += 1; j -= 1
+    elif s &lt; objetivo:
+        i += 1      <span class="cmt"># necesito más</span>
+    else:
+        j -= 1      <span class="cmt"># necesito menos</span></pre>
+      <p><strong>Cómo funciona:</strong> como la lista está ordenada, si la suma es chica solo podés crecer moviendo <code>i</code>; si es grande, solo podés achicar moviendo <code>j</code>. Cada puntero avanza a lo sumo <code>n</code> veces, así que el while total es <code>O(n)</code>.</p>
+      <div class="badges">
+        <span class="badge b-good">O(n) tras el sort</span>
+        <span class="badge b-warn">Total con sort: O(n log n)</span>
+      </div>
+      <div class="src">Enfoque correcto para: <b>J - Never Add Up to X</b></div>
+    </div>
+
+    <div class="card">
+      <h3>Ventana deslizante</h3>
+      <p class="sub">Subarreglo más largo que cumple X</p>
+<pre>izq = 0
+suma = 0
+mejor = 0
+
+for der in range(n):
+    suma += lista[der]           <span class="cmt"># entra</span>
+
+    while suma &gt; limite:         <span class="cmt"># se pasó</span>
+        suma -= lista[izq]       <span class="cmt"># sale</span>
+        izq += 1
+
+    largo = der - izq + 1
+    if largo &gt; mejor: mejor = largo</pre>
+      <p><strong>Cómo funciona:</strong> el puntero derecho avanza siempre; el izquierdo solo cuando la ventana deja de ser válida. Aunque hay un <code>while</code> dentro del <code>for</code>, <strong>no es O(n²)</strong>: <code>izq</code> nunca retrocede, así que en total avanza <code>n</code> posiciones.</p>
+      <div class="badges">
+        <span class="badge b-good">O(n) amortizado</span>
+        <span class="badge b-good">Memoria O(1)</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 10. GREEDY ============ -->
+<section id="greedy">
+  <div class="sec-head">
+    <h2>10 · Greedy y barridos</h2>
+    <div class="note">Ordenar primero, decidir localmente después</div>
+  </div>
+
+  <div class="grid two">
+
+    <div class="card">
+      <h3>Emparejar extremos</h3>
+      <p class="sub">Uno ascendente contra otro descendente</p>
+<pre>r = sorted(map(int, input().split()))
+a = sorted(map(int, input().split()), reverse=True)
+
+sumas = [r[i] + a[i] for i in range(n)]
+print(max(sumas) - min(sumas))</pre>
+      <p><strong>Cómo funciona:</strong> emparejar el más chico de una lista con el más grande de la otra <strong>minimiza la dispersión</strong> de las sumas. Es un intercambio clásico: si dos pares están "cruzados", intercambiarlos nunca empeora el resultado.</p>
+      <div class="badges"><span class="badge b-good">O(n log n) por los dos sorts</span></div>
+      <div class="src">Usado en: <b>C - Chromatic</b></div>
+    </div>
+
+    <div class="card">
+      <h3>Filtro de mínimos por prefijo</h3>
+      <p class="sub">Descartar los elementos inútiles</p>
+<pre>f = []
+minimo = float('inf')
+for e in o:
+    if e &lt; minimo:      <span class="cmt"># mejora el récord</span>
+        f.append(e)
+        minimo = e
+<span class="cmt"># f queda ordenada estrictamente descendente</span></pre>
+      <p><strong>Cómo funciona:</strong> en un solo barrido te quedás solo con los elementos que mejoran el mínimo visto hasta ahora. Los demás son <strong>dominados</strong>: nunca van a ser la mejor opción, porque hay uno anterior más chico. Reduce drásticamente el tamaño del problema.</p>
+      <div class="badges">
+        <span class="badge b-good">O(n), un solo barrido</span>
+      </div>
+      <div class="src">Usado en: <b>A - Alfajores</b>, <b>K - Kings Conquest</b> (puntos no dominados)</div>
+    </div>
+
+    <div class="card">
+      <h3>Bandera de estado</h3>
+      <p class="sub">Recorridos con memoria del paso anterior</p>
+<pre>f = 0
+ficha = False
+
+for j in range(n):
+    if (fila[j:j+2] == "NN") and (not ficha):
+        f += 1
+        ficha = True     <span class="cmt"># ocupé esta posición</span>
+    else:
+        ficha = False    <span class="cmt"># liberé</span></pre>
+      <p><strong>Cómo funciona:</strong> mantenés una variable booleana con lo que pasó en el paso anterior para evitar solapamientos. Es una máquina de estados mínima: <code>O(n)</code> y memoria <code>O(1)</code>.</p>
+      <div class="badges"><span class="badge b-good">O(n), memoria O(1)</span></div>
+      <div class="src">Usado en: <b>B - Black and white</b>, <b>F - Fixture</b> (racha de ganados)</div>
+    </div>
+
+    <div class="card">
+      <h3>Umbral entre dos estrategias</h3>
+      <p class="sub">Elegir según el tamaño de la entrada</p>
+<pre>UMBRAL = 64
+
+if total &lt;= UMBRAL:
+    <span class="cmt"># pocos elementos: barrido lineal directo,</span>
+    <span class="cmt"># sin overhead de llamar a bisect</span>
+    for a in v:
+        for e in f: ...
+else:
+    <span class="cmt"># muchos: búsqueda binaria para saltear</span>
+    for a in v:
+        j = bisect_left(g, -r, desde)</pre>
+      <p><strong>Cómo funciona:</strong> a veces el algoritmo asintóticamente peor gana en entradas chicas porque no paga el costo constante. Medís dónde se cruzan las curvas y elegís la rama en tiempo de ejecución. Técnica avanzada pero decisiva cuando estás al límite del TLE.</p>
+      <div class="badges">
+        <span class="badge b-neutral">Best of both: O(n·k) o O(n log m)</span>
+      </div>
+      <div class="src">Usado en: <b>A - Alfajores</b> — así se resolvió el TLE del test 28</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 11. MATE ============ -->
+<section id="mate">
+  <div class="sec-head">
+    <h2>11 · Aritmética</h2>
+    <div class="note">Python tiene enteros infinitos — aprovechalo</div>
+  </div>
+
+  <div class="grid two">
+
+    <div class="card">
+      <h3>División, módulo y redondeo</h3>
+      <p class="sub">Cuidado con los negativos</p>
+<pre>7 // 2       <span class="cmt"># 3</span>
+-7 // 2      <span class="cmt"># -4  ← redondea HACIA ABAJO</span>
+7 % 3        <span class="cmt"># 1</span>
+-7 % 3       <span class="cmt"># 2   ← el módulo es SIEMPRE positivo</span>
+
+<span class="cmt"># división hacia arriba (techo) sin floats</span>
+techo = -(-a // b)
+techo = (a + b - 1) // b   <span class="cmt"># solo si a,b > 0</span>
+
+divmod(7, 3)   <span class="cmt"># (2, 1) — cociente y resto juntos</span></pre>
+      <p><strong>Cómo funciona:</strong> <code>//</code> redondea hacia el infinito negativo, no hacia cero. Eso hace que <code>%</code> en Python siempre devuelva el signo del divisor — muy cómodo para índices circulares (<code>(i-1) % n</code> nunca te da negativo).</p>
+      <div class="badges"><span class="badge b-good">O(1) para enteros chicos</span></div>
+      <div class="src">Usado en: <b>G - Going to the kiosk</b>, <b>I - Inés</b>, <b>L - Games</b></div>
+    </div>
+
+    <div class="card">
+      <h3>Aritmética modular</h3>
+      <p class="sub">Cuando piden "módulo 10⁹+7"</p>
+<pre>MOD = 10**9 + 7
+
+(a + b) % MOD
+(a * b) % MOD
+
+<span class="cmt"># potencia modular: O(log e), builtin en C</span>
+pow(a, e, MOD)
+
+<span class="cmt"># inverso multiplicativo (MOD primo)</span>
+inv = pow(a, MOD - 2, MOD)
+
+<span class="cmt"># división modular</span>
+(a * pow(b, MOD-2, MOD)) % MOD</pre>
+      <p><strong>Cómo funciona:</strong> <code>pow(a, e, m)</code> usa exponenciación binaria: eleva al cuadrado repetidamente en vez de multiplicar <code>e</code> veces. Nunca escribas <code>a**e % MOD</code> — eso calcula el número entero gigante primero y te cuelga.</p>
+      <div class="badges">
+        <span class="badge b-good">pow(a,e,m): O(log e)</span>
+        <span class="badge b-bad">a**e % m: puede ser O(enorme)</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Índices circulares</h3>
+      <p class="sub">Envolver un arreglo sobre sí mismo</p>
+<pre>siguiente = (i + 1) % n
+anterior  = (i - 1) % n    <span class="cmt"># funciona con i=0</span>
+
+<span class="cmt"># desplazar k posiciones</span>
+destino = (i + k) % n
+
+<span class="cmt"># clasificar por clase de equivalencia</span>
+freq = [0] * n
+for i, a in enumerate(A):
+    freq[(a + i) % n] += 1</pre>
+      <p><strong>Cómo funciona:</strong> el módulo mapea cualquier índice al rango <code>[0, n)</code>. Como en Python el resto nunca es negativo, <code>(0-1) % n</code> da <code>n-1</code> directamente, sin el <code>if i == 0</code> que necesitarías en C++.</p>
+      <div class="badges"><span class="badge b-good">O(1)</span></div>
+      <div class="src">Usado en: <b>C - Circularly</b></div>
+    </div>
+
+    <div class="card">
+      <h3>gcd, lcm, abs</h3>
+      <p class="sub">Del módulo math</p>
+<pre>import math
+
+math.gcd(a, b)        <span class="cmt"># máximo común divisor, O(log min)</span>
+math.lcm(a, b)        <span class="cmt"># mínimo común múltiplo (3.9+)</span>
+math.gcd(*lista)      <span class="cmt"># gcd de toda una lista</span>
+
+<span class="cmt"># si no tenés math.lcm</span>
+lcm = a * b // math.gcd(a, b)
+
+abs(x)                <span class="cmt"># valor absoluto</span></pre>
+      <p><strong>Cómo funciona:</strong> <code>gcd</code> usa el algoritmo de Euclides: reemplaza <code>(a,b)</code> por <code>(b, a%b)</code> hasta que <code>b</code> es cero. Converge en <code>O(log min(a,b))</code>. En <code>lcm</code> dividí <em>antes</em> de multiplicar para no inflar el número.</p>
+      <div class="badges"><span class="badge b-good">gcd: O(log min(a,b))</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 12. DIVISORES ============ -->
+<section id="divisores">
+  <div class="sec-head">
+    <h2>12 · Divisores y primos</h2>
+    <div class="note">La raíz cuadrada es tu límite</div>
+  </div>
+
+  <div class="grid two">
+
+    <div class="card">
+      <h3>isqrt y cuadrados perfectos</h3>
+      <p class="sub">Sin errores de punto flotante</p>
+<pre>import math
+
+math.isqrt(n)              <span class="cmt"># raíz entera EXACTA</span>
+
+<span class="cmt"># ¿es cuadrado perfecto?</span>
+r = math.isqrt(n)
+if r * r == n:             <span class="cmt"># ← forma correcta</span>
+    ...
+
+<span class="cmt"># forma frágil con floats</span>
+if math.sqrt(n) % 1 == 0:  <span class="cmt"># falla con n grandes</span>
+    ...</pre>
+      <p><strong>Cómo funciona:</strong> <code>math.sqrt</code> devuelve un float de 64 bits: con <code>n</code> mayor a ~2⁵³ pierde precisión y te miente. <code>isqrt</code> trabaja con enteros puros y devuelve el mayor entero cuyo cuadrado no supera <code>n</code> — nunca se equivoca.</p>
+      <div class="badges">
+        <span class="badge b-good">isqrt: O(log n), exacto</span>
+        <span class="badge b-bad">sqrt: impreciso para n grande</span>
+      </div>
+      <div class="src">Usado en: <b>H - Hidden divisor</b> — vale la pena cambiar el <code>sqrt % 1</code> por <code>isqrt</code></div>
+    </div>
+
+    <div class="card">
+      <h3>Todos los divisores de n</h3>
+      <p class="sub">Solo hasta la raíz</p>
+<pre>def divisores(n):
+    res = []
+    i = 1
+    while i * i &lt;= n:
+        if n % i == 0:
+            res.append(i)
+            if i != n // i:      <span class="cmt"># evita duplicar</span>
+                res.append(n // i)
+        i += 1
+    return sorted(res)</pre>
+      <p><strong>Cómo funciona:</strong> los divisores vienen <strong>en pares</strong>: si <code>i</code> divide a <code>n</code>, entonces <code>n//i</code> también. Uno de los dos siempre es <code>≤ √n</code>, así que recorriendo hasta ahí los encontrás todos. El <code>if i != n//i</code> evita contar dos veces la raíz cuando <code>n</code> es cuadrado perfecto.</p>
+      <div class="badges">
+        <span class="badge b-good">O(√n)</span>
+        <span class="badge b-good">Memoria O(d(n)) — pocos divisores</span>
+      </div>
+      <div class="src">Concepto central de: <b>H - Hidden divisor</b></div>
+    </div>
+
+    <div class="card">
+      <h3>¿Es primo?</h3>
+      <p class="sub">Test por divisiones hasta √n</p>
+<pre>def es_primo(n):
+    if n &lt; 2: return False
+    if n &lt; 4: return True
+    if n % 2 == 0: return False
+    i = 3
+    while i * i &lt;= n:
+        if n % i == 0: return False
+        i += 2          <span class="cmt"># solo impares</span>
+    return True</pre>
+      <p><strong>Cómo funciona:</strong> si <code>n</code> tiene un divisor mayor a <code>√n</code>, su pareja es menor, así que basta probar hasta ahí. Descartando los pares de entrada, recorrés la mitad de los candidatos.</p>
+      <div class="badges">
+        <span class="badge b-good">O(√n)</span>
+        <span class="badge b-warn">Para muchas consultas: usá criba</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Criba de Eratóstenes</h3>
+      <p class="sub">Todos los primos hasta N de una vez</p>
+<pre>def criba(N):
+    es = bytearray([1]) * (N + 1)
+    es[0] = es[1] = 0
+    for i in range(2, math.isqrt(N) + 1):
+        if es[i]:
+            <span class="cmt"># marca múltiplos desde i*i, en C</span>
+            es[i*i::i] = bytearray(len(es[i*i::i]))
+    return [i for i in range(N+1) if es[i]]</pre>
+      <p><strong>Cómo funciona:</strong> marcás como compuesto cada múltiplo de cada primo. Arranca en <code>i*i</code> porque los menores ya fueron marcados por primos anteriores. El truco del <code>bytearray</code> con asignación por slice hace el marcado <strong>entero en C</strong>, mucho más rápido que un for.</p>
+      <div class="badges">
+        <span class="badge b-good">O(N log log N) ≈ lineal</span>
+        <span class="badge b-good">Memoria: N bytes (no N enteros)</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Factorización prima</h3>
+      <p class="sub">n = p₁^a · p₂^b · …</p>
+<pre>def factorizar(n):
+    f = {}
+    d = 2
+    while d * d &lt;= n:
+        while n % d == 0:
+            f[d] = f.get(d, 0) + 1
+            n //= d
+        d += 1
+    if n &gt; 1:
+        f[n] = f.get(n, 0) + 1   <span class="cmt"># primo grande</span>
+    return f</pre>
+      <p><strong>Cómo funciona:</strong> dividís por cada candidato hasta que ya no entra, lo que garantiza que solo encontrás primos. Si al terminar el bucle queda <code>n &gt; 1</code>, ese resto es un primo mayor a <code>√n</code> y va con exponente 1.</p>
+      <div class="badges">
+        <span class="badge b-good">O(√n)</span>
+        <span class="badge b-neutral">Cantidad de divisores: ∏(aᵢ + 1)</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Comprobar si divide toda la lista</h3>
+      <p class="sub">all() y any()</p>
+<pre><span class="cmt"># ¿todos dividen al mayor?</span>
+if all(ult % c == 0 for c in lista):
+    ...
+
+<span class="cmt"># ¿alguno cumple?</span>
+if any(x &gt; k for x in lista):
+    ...</pre>
+      <p><strong>Cómo funciona:</strong> ambos <strong>cortan apenas saben la respuesta</strong> (short-circuit): <code>all</code> para en el primer <code>False</code>, <code>any</code> en el primer <code>True</code>. Con un generador dentro, no construyen ninguna lista intermedia.</p>
+      <div class="badges">
+        <span class="badge b-good">O(n) peor caso, memoria O(1)</span>
+      </div>
+      <div class="src">Reemplaza el loop con bandera de: <b>H (otras resolución)</b></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 13. BITS ============ -->
+<section id="bits">
+  <div class="sec-head">
+    <h2>13 · Operaciones con bits</h2>
+    <div class="note">Comparación bit por bit, en un solo ciclo de CPU</div>
+  </div>
+
+  <div class="grid two">
+
+    <div class="card">
+      <h3>Los operadores</h3>
+      <p class="sub">Y, O, XOR, desplazamientos</p>
+<pre>a &amp; b     <span class="cmt"># AND: 1 donde AMBOS tienen 1</span>
+a | b     <span class="cmt"># OR:  1 donde ALGUNO tiene 1</span>
+a ^ b     <span class="cmt"># XOR: 1 donde son DISTINTOS</span>
+a &lt;&lt; k    <span class="cmt"># multiplica por 2^k</span>
+a &gt;&gt; k    <span class="cmt"># divide por 2^k (hacia abajo)</span>
+
+1 &lt;&lt; 62   <span class="cmt"># infinito entero práctico</span>
+x.bit_length()   <span class="cmt"># bits necesarios</span>
+bin(x).count('1')  <span class="cmt"># cuántos unos</span></pre>
+      <p><strong>Cómo funciona:</strong> operan sobre la representación binaria directamente. <code>&lt;&lt; k</code> corre los bits a la izquierda agregando ceros, que es exactamente multiplicar por potencias de 2 — más rápido que la multiplicación.</p>
+      <div class="badges"><span class="badge b-good">O(1) para enteros de máquina</span></div>
+      <div class="src">Usado en: <b>L - Games</b>, <b>K - Kings Conquest</b> (<code>INF = 1 &lt;&lt; 62</code>)</div>
+    </div>
+
+    <div class="card">
+      <h3>¿Es potencia de 2?</h3>
+      <p class="sub">El truco de x &amp; (x-1)</p>
+<pre>if x &gt; 0 and (x &amp; (x - 1)) == 0:
+    <span class="cmt"># x es potencia de 2</span>
+
+<span class="cmt"># Por qué:</span>
+<span class="cmt">#   x   = 1000  (8)</span>
+<span class="cmt">#   x-1 = 0111  (7)</span>
+<span class="cmt">#   AND = 0000  →  0</span>
+
+<span class="cmt"># apagar el bit encendido más bajo</span>
+x &amp; (x - 1)
+
+<span class="cmt"># aislar el bit encendido más bajo</span>
+x &amp; -x</pre>
+      <p><strong>Cómo funciona:</strong> una potencia de 2 tiene exactamente un bit en 1. Restar 1 apaga ese bit y enciende todos los de abajo, así que el AND siempre da 0. Cualquier otro número conserva al menos un bit en común.</p>
+      <div class="badges">
+        <span class="badge b-good">O(1) — una instrucción</span>
+        <span class="badge b-bad">Ojo: x=0 pasa el test, filtralo</span>
+      </div>
+      <div class="src">Usado en: <b>L - Games</b> para separar potencias de 2</div>
+    </div>
+
+    <div class="card">
+      <h3>Subconjuntos con bitmask</h3>
+      <p class="sub">Para n ≤ 20</p>
+<pre>for mask in range(1 &lt;&lt; n):        <span class="cmt"># 2^n subconjuntos</span>
+    sub = []
+    for i in range(n):
+        if mask &gt;&gt; i &amp; 1:          <span class="cmt"># ¿bit i encendido?</span>
+            sub.append(lista[i])
+    <span class="cmt"># evaluar sub</span></pre>
+      <p><strong>Cómo funciona:</strong> cada número de 0 a 2ⁿ−1 codifica un subconjunto: el bit <code>i</code> dice si el elemento <code>i</code> está incluido. Iterar sobre todos los enteros te da todos los subconjuntos, sin recursión.</p>
+      <div class="badges">
+        <span class="badge b-warn">O(2ⁿ · n) — solo hasta n ≈ 20</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 14. GEO ============ -->
+<section id="geo">
+  <div class="sec-head">
+    <h2>14 · Geometría</h2>
+    <div class="note">Evitá la raíz cuadrada siempre que puedas</div>
+  </div>
+
+  <div class="grid two">
+
+    <div class="card">
+      <h3>Distancia entre puntos</h3>
+      <p class="sub">hypot vs distancia al cuadrado</p>
+<pre>import math
+
+<span class="cmt"># euclidiana</span>
+d = math.hypot(x2 - x1, y2 - y1)
+d = math.dist((x1,y1), (x2,y2))   <span class="cmt"># 3.8+</span>
+
+<span class="cmt"># SOLO para comparar: evitá la raíz</span>
+d2 = (x2-x1)**2 + (y2-y1)**2      <span class="cmt"># exacto, entero</span>
+
+<span class="cmt"># Manhattan</span>
+d = abs(x2-x1) + abs(y2-y1)</pre>
+      <p><strong>Cómo funciona:</strong> si solo necesitás <em>comparar</em> distancias, usá el cuadrado: la raíz es monótona, así que el orden no cambia. Ganás velocidad y —más importante— <strong>trabajás con enteros exactos</strong>, sin errores de punto flotante. <code>hypot</code> evita el desbordamiento intermedio de <code>x**2</code>.</p>
+      <div class="badges">
+        <span class="badge b-good">d²: O(1) con enteros exactos</span>
+        <span class="badge b-warn">sqrt: float, error de redondeo</span>
+      </div>
+      <div class="src">Usado en: <b>F - Cold day at the beach</b> — ahí <strong>convenía usar d²</strong></div>
+    </div>
+
+    <div class="card">
+      <h3>Bounding box</h3>
+      <p class="sub">Rectángulo mínimo que contiene todo</p>
+<pre>xs = [p[0] for p in puntos]
+ys = [p[1] for p in puntos]
+
+xmin, xmax = min(xs), max(xs)
+ymin, ymax = min(ys), max(ys)
+
+ancho = xmax - xmin + 1     <span class="cmt"># celdas, no distancia</span>
+alto  = ymax - ymin + 1
+
+area      = ancho * alto
+perimetro = 2 * (ancho + alto)</pre>
+      <p><strong>Cómo funciona:</strong> un solo barrido con <code>min</code>/<code>max</code> sobre cada eje por separado. Ojo con el <code>+1</code>: si contás <strong>celdas</strong> de una grilla va, si medís <strong>distancia</strong> no. En <code>N - Nothofagus</code> el <code>+2</code> viene de sumar 1 celda de margen a cada lado.</p>
+      <div class="badges">
+        <span class="badge b-good">O(n)</span>
+      </div>
+      <div class="src">Usado en: <b>N - Nothofagus antarctica</b>, <b>K - Kings Conquest</b></div>
+    </div>
+
+    <div class="card">
+      <h3>Producto cruz (orientación)</h3>
+      <p class="sub">¿Giro a izquierda o a derecha?</p>
+<pre>def cruz(o, a, b):
+    return ((a[0]-o[0]) * (b[1]-o[1]) -
+            (a[1]-o[1]) * (b[0]-o[0]))
+
+<span class="cmt"># > 0  → giro antihorario (izquierda)</span>
+<span class="cmt"># < 0  → giro horario (derecha)</span>
+<span class="cmt"># = 0  → colineales</span>
+
+<span class="cmt"># área del triángulo</span>
+area = abs(cruz(o, a, b)) / 2</pre>
+      <p><strong>Cómo funciona:</strong> es el determinante de los dos vectores. Su signo indica de qué lado de la recta <code>o→a</code> cae <code>b</code>. Con coordenadas enteras el resultado es entero <strong>exacto</strong>, sin ningún error de precisión — base de casi toda la geometría computacional.</p>
+      <div class="badges"><span class="badge b-good">O(1), exacto con enteros</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Envolvente convexa (Andrew)</h3>
+      <p class="sub">Convex hull</p>
+<pre>def hull(pts):
+    pts = sorted(set(pts))
+    if len(pts) &lt;= 2: return pts
+
+    def media(ps):
+        h = []
+        for p in ps:
+            while len(h) &gt;= 2 and cruz(h[-2], h[-1], p) &lt;= 0:
+                h.pop()
+            h.append(p)
+        return h
+
+    return media(pts)[:-1] + media(pts[::-1])[:-1]</pre>
+      <p><strong>Cómo funciona:</strong> ordenás por <code>x</code> y construís la cadena inferior y la superior. Mientras los últimos tres puntos no giren en el sentido correcto, sacás el del medio. Cada punto entra y sale a lo sumo una vez, así que las dos pasadas son <code>O(n)</code>; el costo lo domina el sort.</p>
+      <div class="badges">
+        <span class="badge b-good">O(n log n) por el sort</span>
+        <span class="badge b-good">Las pasadas: O(n) amortizado</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 15. STRINGS ============ -->
+<section id="strings">
+  <div class="sec-head">
+    <h2>15 · Strings</h2>
+    <div class="note">Son inmutables: concatenar en loop es O(n²)</div>
+  </div>
+
+  <div class="grid two">
+
+    <div class="card">
+      <h3>Métodos esenciales</h3>
+      <p class="sub">Todos corren en C</p>
+<pre>s.strip()          <span class="cmt"># saca espacios/saltos de los bordes</span>
+s.split()          <span class="cmt"># por espacios</span>
+s.split(',')       <span class="cmt"># por un separador</span>
+s.count('T')       <span class="cmt"># ocurrencias, O(n)</span>
+s.find('ab')       <span class="cmt"># índice o -1</span>
+s.replace('a','b')
+s.upper() / s.lower()
+s.startswith('ab') / s.endswith('ab')
+
+sorted(s)          <span class="cmt"># lista de caracteres ordenada</span>
+''.join(sorted(s)) <span class="cmt"># string ordenado</span></pre>
+      <p><strong>Cómo funciona:</strong> <code>strip()</code> es casi obligatorio al leer con <code>input()</code>, porque el <code>\n</code> final se cuela y rompe las comparaciones. Todos estos métodos están en C, así que una llamada suelta sobre 10⁶ caracteres es instantánea.</p>
+      <div class="badges">
+        <span class="badge b-good">count/find/replace: O(n)</span>
+      </div>
+      <div class="src">Usado en: <b>G - Garlands</b>, <b>A - Artifact to print</b></div>
+    </div>
+
+    <div class="card">
+      <h3>Buscar patrones por ventana</h3>
+      <p class="sub">Slicing sin verificar bordes</p>
+<pre>for i in range(len(s)):
+    if   s[i:i+2] == "ha":    p += 1
+    elif s[i:i+5] == "boooo": p -= 1
+    elif s[i:i+5] == "bravo": p += 3
+
+<span class="cmt"># contar sin solapamiento (más rápido)</span>
+s.count("ha")</pre>
+      <p><strong>Cómo funciona:</strong> el slicing recorta al final del string sin lanzar error, así que no necesitás el <code>if i+5 &lt;= len(s)</code>. Cada rebanada crea un string nuevo de largo <code>k</code>, por eso el costo es <code>O(n·k)</code> — con <code>k</code> chico da lo mismo.</p>
+      <div class="badges">
+        <span class="badge b-good">O(n·k), k = largo del patrón</span>
+        <span class="badge b-good">s.count(): O(n) en C</span>
+      </div>
+      <div class="src">Usado en: <b>J - Judgmental Crowd</b>, <b>B - Black and white</b></div>
+    </div>
+
+    <div class="card">
+      <h3>Subsecuencia en orden</h3>
+      <p class="sub">¿Aparecen las letras, aunque separadas?</p>
+<pre>objetivo = "TAP"
+j = 0
+for c in lista:
+    if c == objetivo[j]:
+        j += 1
+        if j == len(objetivo):
+            break
+
+print("S" if j == len(objetivo) else "N")</pre>
+      <p><strong>Cómo funciona:</strong> un puntero greedy sobre el patrón. Cada vez que encontrás la letra que esperabas, avanzás. Es óptimo: tomar la primera aparición posible <strong>nunca</strong> te deja en peor situación que esperar una posterior.</p>
+      <div class="badges">
+        <span class="badge b-good">O(n), memoria O(1)</span>
+      </div>
+      <div class="src">Usado en: <b>A - Artifact to print</b></div>
+    </div>
+
+    <div class="card">
+      <h3>Construir strings sin O(n²)</h3>
+      <p class="sub">Acumulá y uní al final</p>
+<pre><span class="cmt"># MAL: cada += copia todo el string</span>
+s = ""
+for x in lista:
+    s += str(x)          <span class="cmt"># O(n²)</span>
+
+<span class="cmt"># BIEN</span>
+partes = []
+for x in lista:
+    partes.append(str(x))
+s = ''.join(partes)      <span class="cmt"># O(n)</span></pre>
+      <p><strong>Cómo funciona:</strong> los strings son inmutables, así que <code>s += x</code> crea uno nuevo copiando todo lo anterior. Con <code>n</code> concatenaciones eso es <code>O(n²)</code>. <code>join</code> mide primero el total, reserva una vez y copia una vez.</p>
+      <div class="badges">
+        <span class="badge b-bad">+= en loop: O(n²)</span>
+        <span class="badge b-good">join: O(n)</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 16. GRAFOS ============ -->
+<section id="grafos">
+  <div class="sec-head">
+    <h2>16 · Grafos</h2>
+    <div class="note">BFS para pasos, Dijkstra para pesos</div>
+  </div>
+
+  <div class="grid two">
+
+    <div class="card">
+      <h3>Lista de adyacencia</h3>
+      <p class="sub">Cómo guardar el grafo</p>
+<pre>g = [[] for _ in range(n + 1)]   <span class="cmt"># 1-based</span>
+
+for _ in range(m):
+    u, v = next(it), next(it)
+    g[u].append(v)
+    g[v].append(u)      <span class="cmt"># si NO es dirigido</span>
+
+<span class="cmt"># con peso</span>
+g[u].append((v, w))</pre>
+      <p><strong>Cómo funciona:</strong> una lista de listas donde <code>g[u]</code> son los vecinos de <code>u</code>. Ocupa <code>O(n + m)</code>, contra <code>O(n²)</code> de la matriz de adyacencia — indispensable con <code>n = 10⁵</code>.</p>
+      <div class="badges">
+        <span class="badge b-good">Memoria O(n + m)</span>
+        <span class="badge b-good">Recorrer vecinos: O(grado)</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>BFS — camino mínimo sin pesos</h3>
+      <p class="sub">Por niveles, con deque</p>
+<pre>from collections import deque
+
+dist = [-1] * (n + 1)
+dist[origen] = 0
+q = deque([origen])
+
+while q:
+    u = q.popleft()
+    for v in g[u]:
+        if dist[v] == -1:      <span class="cmt"># no visitado</span>
+            dist[v] = dist[u] + 1
+            q.append(v)</pre>
+      <p><strong>Cómo funciona:</strong> visita en orden de distancia creciente, así que la primera vez que llegás a un nodo ya es por el camino más corto. El <code>dist[v] == -1</code> hace de "visitado" y de distancia a la vez. <strong>Solo sirve si todas las aristas pesan lo mismo.</strong></p>
+      <div class="badges">
+        <span class="badge b-good">O(n + m)</span>
+        <span class="badge b-good">Memoria O(n)</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>DFS iterativo</h3>
+      <p class="sub">Sin recursión: evita el límite de pila</p>
+<pre>visto = [False] * (n + 1)
+pila = [origen]
+
+while pila:
+    u = pila.pop()
+    if visto[u]: continue
+    visto[u] = True
+    for v in g[u]:
+        if not visto[v]:
+            pila.append(v)</pre>
+      <p><strong>Cómo funciona:</strong> igual que el BFS pero con <code>pop()</code> del final en vez de <code>popleft()</code>. Python limita la recursión a ~1000 niveles: con <code>n = 10⁵</code> un DFS recursivo <strong>revienta con RecursionError</strong>. La versión iterativa no tiene ese techo.</p>
+      <div class="badges">
+        <span class="badge b-good">O(n + m)</span>
+        <span class="badge b-bad">Recursivo: RecursionError con n grande</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Dijkstra — con pesos positivos</h3>
+      <p class="sub">BFS pero con heap</p>
+<pre>import heapq
+
+INF = 1 &lt;&lt; 62
+dist = [INF] * (n + 1)
+dist[origen] = 0
+h = [(0, origen)]
+
+while h:
+    d, u = heapq.heappop(h)
+    if d &gt; dist[u]: continue    <span class="cmt"># entrada vieja</span>
+    for v, w in g[u]:
+        nd = d + w
+        if nd &lt; dist[v]:
+            dist[v] = nd
+            heapq.heappush(h, (nd, v))</pre>
+      <p><strong>Cómo funciona:</strong> el heap siempre te entrega el nodo pendiente más cercano, así que al sacarlo su distancia ya es definitiva. El <code>if d &gt; dist[u]: continue</code> descarta entradas obsoletas — más barato que borrarlas del heap. <strong>No funciona con pesos negativos.</strong></p>
+      <div class="badges">
+        <span class="badge b-good">O((n + m) log n)</span>
+        <span class="badge b-warn">Memoria O(n + m)</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 17. DP ============ -->
+<section id="dp">
+  <div class="sec-head">
+    <h2>17 · Programación dinámica</h2>
+    <div class="note">Guardá lo ya calculado</div>
+  </div>
+
+  <div class="grid two">
+
+    <div class="card">
+      <h3>DP 1D</h3>
+      <p class="sub">El esqueleto que sirve para casi todo</p>
+<pre>dp = [0] * (n + 1)
+dp[0] = caso_base
+
+for i in range(1, n + 1):
+    dp[i] = max(dp[i-1],
+                dp[i-2] + valor[i])
+
+print(dp[n])</pre>
+      <p><strong>Cómo funciona:</strong> <code>dp[i]</code> guarda la mejor respuesta usando los primeros <code>i</code> elementos. Como cada estado se calcula una sola vez y se reutiliza, evitás el recálculo exponencial de la recursión ingenua.</p>
+      <div class="badges">
+        <span class="badge b-good">O(n · transiciones)</span>
+        <span class="badge b-warn">Memoria O(n)</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Mochila 0/1</h3>
+      <p class="sub">Con una sola fila</p>
+<pre>dp = [0] * (W + 1)
+
+for peso, valor in objetos:
+    <span class="cmt"># hacia ATRÁS: cada objeto una sola vez</span>
+    for w in range(W, peso - 1, -1):
+        cand = dp[w - peso] + valor
+        if cand &gt; dp[w]:
+            dp[w] = cand
+
+print(dp[W])</pre>
+      <p><strong>Cómo funciona:</strong> el recorrido <strong>hacia atrás</strong> es lo esencial: garantiza que <code>dp[w-peso]</code> todavía no incluye el objeto actual. Si fueras hacia adelante estarías permitiendo usarlo varias veces (que es justo la mochila <em>ilimitada</em>).</p>
+      <div class="badges">
+        <span class="badge b-good">O(n · W)</span>
+        <span class="badge b-good">Memoria O(W) — una fila</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>lru_cache — memoización</h3>
+      <p class="sub">DP recursiva sin escribir la tabla</p>
+<pre>import sys
+from functools import lru_cache
+sys.setrecursionlimit(300000)
+
+@lru_cache(maxsize=None)
+def f(i, resto):
+    if i == n: return 0
+    mejor = f(i + 1, resto)
+    if lista[i] &lt;= resto:
+        mejor = max(mejor, f(i+1, resto-lista[i]) + v[i])
+    return mejor</pre>
+      <p><strong>Cómo funciona:</strong> el decorador guarda en un dict el resultado de cada combinación de argumentos. Si volvés a llamar con los mismos, devuelve el guardado sin recalcular. <strong>Los argumentos deben ser hashables</strong> — tuplas sí, listas no.</p>
+      <div class="badges">
+        <span class="badge b-good">O(estados · transición)</span>
+        <span class="badge b-warn">Memoria O(estados) — puede explotar</span>
+        <span class="badge b-bad">Recursión: subí el límite</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>LIS — subsecuencia creciente más larga</h3>
+      <p class="sub">Con bisect, en O(n log n)</p>
+<pre>from bisect import bisect_left
+
+cola = []
+for x in lista:
+    i = bisect_left(cola, x)   <span class="cmt"># bisect_right si permite &lt;=</span>
+    if i == len(cola):
+        cola.append(x)
+    else:
+        cola[i] = x
+
+print(len(cola))   <span class="cmt"># SOLO el largo, no la subsecuencia</span></pre>
+      <p><strong>Cómo funciona:</strong> <code>cola[i]</code> guarda el <strong>menor valor final posible</strong> para una subsecuencia creciente de largo <code>i+1</code>. Mantener finales chicos deja más margen para extender después. El largo de <code>cola</code> es la respuesta, pero su contenido <em>no</em> es la subsecuencia real.</p>
+      <div class="badges">
+        <span class="badge b-good">O(n log n)</span>
+        <span class="badge b-bad">La versión DP simple es O(n²)</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 18. DSU ============ -->
+<section id="dsu">
+  <div class="sec-head">
+    <h2>18 · Union-Find (DSU)</h2>
+    <div class="note">Componentes conexas con uniones dinámicas</div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Estructura completa</h3>
+      <p class="sub">Con compresión de caminos y unión por tamaño</p>
+<pre>padre = list(range(n + 1))
+tam   = [1] * (n + 1)
+
+def find(x):
+    <span class="cmt"># compresión iterativa (sin recursión)</span>
+    raiz = x
+    while padre[raiz] != raiz:
+        raiz = padre[raiz]
+    while padre[x] != raiz:
+        padre[x], x = raiz, padre[x]
+    return raiz
+
+def union(a, b):
+    ra, rb = find(a), find(b)
+    if ra == rb:
+        return False              <span class="cmt"># ya estaban juntos</span>
+    if tam[ra] &lt; tam[rb]:         <span class="cmt"># el chico cuelga del grande</span>
+        ra, rb = rb, ra
+    padre[rb] = ra
+    tam[ra] += tam[rb]
+    return True
+
+<span class="cmt"># cuántas componentes quedaron</span>
+componentes = sum(1 for i in range(1, n+1) if find(i) == i)</pre>
+      <p><strong>Cómo funciona:</strong> cada conjunto es un árbol y su raíz lo identifica. <em>Compresión de caminos</em>: al buscar, reengancha todos los nodos del camino directo a la raíz. <em>Unión por tamaño</em>: el árbol chico cuelga del grande, para que nunca se vuelva profundo. Juntas dejan cada operación en tiempo prácticamente constante.</p>
+      <p><strong>Cuándo usarlo:</strong> conectividad con aristas que se van agregando, Kruskal para el árbol generador mínimo, o contar grupos de elementos relacionados.</p>
+      <div class="badges">
+        <span class="badge b-good">find/union: O(α(n)) ≈ O(1)</span>
+        <span class="badge b-good">Memoria O(n)</span>
+        <span class="badge b-neutral">α(n) &lt; 5 para cualquier n real</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 19. TLE ============ -->
+<section id="tle">
+  <div class="sec-head">
+    <h2>19 · Combatir el TLE</h2>
+    <div class="note">Checklist cuando el algoritmo ya es correcto</div>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>En vez de</th><th>Usá</th><th>Por qué</th><th>Ganancia</th></tr></thead>
+      <tbody>
+        <tr><td><code>input()</code> en loop</td><td><code>sys.stdin.buffer.read().split()</code></td><td>1 syscall en lugar de n</td><td><span class="badge b-good">10–50×</span></td></tr>
+        <tr><td><code>print()</code> en loop</td><td>acumular + <code>sys.stdout.write</code></td><td>1 flush en lugar de n</td><td><span class="badge b-good">10–50×</span></td></tr>
+        <tr><td>código suelto</td><td>todo dentro de <code>def main()</code></td><td>las variables locales son más rápidas que las globales</td><td><span class="badge b-good">15–30%</span></td></tr>
+        <tr><td><code>while</code></td><td><code>for</code> / <code>range</code></td><td>el for itera en C, sin evaluar condición en Python</td><td><span class="badge b-good">20–40%</span></td></tr>
+        <tr><td><code>for</code> + <code>append</code></td><td>comprensión o <code>map</code></td><td>evita buscar el método en cada vuelta</td><td><span class="badge b-good">30%</span></td></tr>
+        <tr><td><code>x in lista</code></td><td><code>x in set</code></td><td>hash en vez de barrido lineal</td><td><span class="badge b-good">O(n) → O(1)</span></td></tr>
+        <tr><td><code>lista.pop(0)</code></td><td><code>deque.popleft()</code></td><td>no desplaza los elementos</td><td><span class="badge b-good">O(n) → O(1)</span></td></tr>
+        <tr><td><code>s += x</code> en loop</td><td><code>''.join(partes)</code></td><td>no recopia el string cada vez</td><td><span class="badge b-good">O(n²) → O(n)</span></td></tr>
+        <tr><td><code>d.get(k)</code> en loop</td><td><code>g = d.get</code> afuera</td><td>evita la búsqueda del atributo</td><td><span class="badge b-good">10–20%</span></td></tr>
+        <tr><td><code>math.sqrt(a)</code> para comparar</td><td>comparar los cuadrados</td><td>sin raíz y con enteros exactos</td><td><span class="badge b-good">2–3× + precisión</span></td></tr>
+        <tr><td><code>sort(key=lambda ...)</code></td><td>ordenar tuplas directas</td><td>comparación entera en C</td><td><span class="badge b-good">2×</span></td></tr>
+        <tr><td>consultas de rango en loop</td><td>prefix sums</td><td>precalcular una vez</td><td><span class="badge b-good">O(n·q) → O(n+q)</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout warn">
+    <p><strong>Si ya optimizaste todo y sigue el TLE:</strong> el problema es el algoritmo, no el código. Volvé a mirar <code>n</code> en el enunciado y la tabla de la sección 2. Casi siempre hay una estructura (set, prefix, bisect, heap) que te baja un factor <code>n</code> entero.</p>
+  </div>
+</section>
+
+<!-- ============ 20. TRAMPAS ============ -->
+<section id="trampas">
+  <div class="sec-head">
+    <h2>20 · Trampas frecuentes</h2>
+    <div class="note">Errores que dan Wrong Answer, no TLE</div>
+  </div>
+
+  <div class="grid two">
+
+    <div class="card">
+      <h3>Casos borde del enunciado</h3>
+<pre><span class="cmt"># n = 1: ¿el bucle siquiera corre?</span>
+if n == 1:
+    print(...)
+    return
+
+<span class="cmt"># lista vacía → min()/max() explotan</span>
+if not lista: ...
+
+<span class="cmt"># índice fuera de rango en i-1 / i+1</span>
+if i + 1 &lt; n and lista[i] + lista[i+1] == x:</pre>
+      <p><strong>Qué revisar:</strong> el mínimo y el máximo de cada restricción del enunciado. En <code>K - Kings Conquest</code> el caso <code>n == 1</code> se resuelve antes de todo el algoritmo. En <code>H - Hidden divisor</code>, <code>n == 1</code> con el valor <code>1</code> es un caso completamente aparte.</p>
+      <div class="src">Casos límite en: <b>H - Hidden divisor</b>, <b>K - Kings Conquest</b></div>
+    </div>
+
+    <div class="card">
+      <h3>Off-by-one</h3>
+<pre><span class="cmt"># prefix sums: 1-based vs 0-based</span>
+suma = pre[r] - pre[l-1]    <span class="cmt"># si l,r son 1-based</span>
+suma = pre[r+1] - pre[l]    <span class="cmt"># si son 0-based</span>
+
+<span class="cmt"># celdas vs distancia</span>
+ancho = xmax - xmin + 1     <span class="cmt"># cantidad de celdas</span>
+ancho = xmax - xmin         <span class="cmt"># distancia</span>
+
+<span class="cmt"># pasar a 0-based al leer</span>
+A = [x - 1 for x in lista]</pre>
+      <p><strong>Qué revisar:</strong> definí desde el principio si trabajás 0-based o 1-based y no lo mezcles. Si el enunciado da índices 1-based, convertí al leer (<code>x - 1</code>) o reservá <code>n+1</code> posiciones y dejá la 0 sin usar.</p>
+      <div class="src">Convención usada en: <b>C - Circularly</b>, <b>L - Games</b></div>
+    </div>
+
+    <div class="card">
+      <h3>Enteros y flotantes</h3>
+<pre><span class="cmt"># Python no desborda enteros — no te preocupes</span>
+10**18 * 10**18     <span class="cmt"># funciona</span>
+
+<span class="cmt"># pero los floats SÍ pierden precisión</span>
+0.1 + 0.2 == 0.3            <span class="cmt"># False</span>
+math.sqrt(10**18) % 1 == 0  <span class="cmt"># poco confiable</span>
+
+<span class="cmt"># comparar floats con tolerancia</span>
+abs(a - b) &lt; 1e-9
+
+<span class="cmt"># mejor: quedate en enteros</span>
+math.isqrt(n) ** 2 == n</pre>
+      <p><strong>Qué revisar:</strong> si el problema es de enteros, resolvelo con enteros. El único lugar donde <em>tenés</em> que usar floats es cuando piden un resultado decimal — y ahí usá el formato exacto que pide el enunciado (<code>f"{d:.6f}"</code>).</p>
+      <div class="src">Riesgo presente en: <b>H - Hidden divisor</b> (<code>sqrt % 1</code>)</div>
+    </div>
+
+    <div class="card">
+      <h3>Bucles que no terminan</h3>
+<pre><span class="cmt"># un while True necesita SIEMPRE una salida</span>
+while True:
+    ...
+    if condicion: break      <span class="cmt"># ¿seguro que se cumple?</span>
+
+<span class="cmt"># si el estado puede repetirse, se cuelga</span>
+<span class="cmt"># → replanteá con for de iteraciones acotadas,</span>
+<span class="cmt">#   o probá que cada vuelta reduce algo</span></pre>
+      <p><strong>Qué revisar:</strong> todo <code>while</code> necesita una <strong>cantidad medible</strong> que decrezca en cada vuelta. En <code>J - Never Add Up to X</code> el <code>while True</code> con intercambios puede volver a un estado ya visto y no terminar nunca — por eso da error en el juez aunque pase los ejemplos.</p>
+      <div class="src">El bug de: <b>J - Never Add Up to X (no anda)</b></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 21. PLANTILLA ============ -->
+<section id="plantilla">
+  <div class="sec-head">
+    <h2>21 · Plantilla base</h2>
+    <div class="note">Empezá todo problema copiando esto</div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>template.py</h3>
+      <p class="sub">Lectura rápida, main(), salida acumulada</p>
+<pre>import sys
+from bisect import bisect_left, bisect_right
+from collections import deque, defaultdict, Counter
+import heapq, math
+
+def main():
+    data = sys.stdin.buffer.read().split()
+    if not data:
+        return
+    it = map(int, data)
+
+    <span class="cmt"># ---- lectura ----</span>
+    n = next(it)
+    lista = [next(it) for _ in range(n)]
+
+    <span class="cmt"># ---- solución ----</span>
+    salida = []
+    for x in lista:
+        salida.append(str(x))
+
+    <span class="cmt"># ---- salida ----</span>
+    sys.stdout.write('\n'.join(salida) + '\n')
+
+if __name__ == '__main__':
+    main()</pre>
+      <p><strong>Por qué así:</strong> todo el trabajo pasa dentro de <code>main()</code>, donde las variables son <strong>locales</strong> — Python las resuelve por índice en un arreglo, no buscando en un diccionario global. Solo por eso ganás entre 15% y 30% sin tocar el algoritmo.</p>
+      <p>Los imports arriba no cuestan nada apreciable y te evitan tener que acordarte del nombre exacto bajo presión.</p>
+      <div class="badges">
+        <span class="badge b-good">Locales vs globales: +15–30%</span>
+        <span class="badge b-good">I/O: 1 read + 1 write</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p><strong>Orden de ataque para cada problema:</strong></p>
+    <p>1 · Leé <code>n</code> y las restricciones → mirá la tabla de la sección 2 para saber qué complejidad te entra.<br>
+    2 · Resolvé primero el caso chico a mano, y buscá el patrón.<br>
+    3 · Escribí la versión clara, aunque sea lenta.<br>
+    4 · Si el <code>n</code> no da, buscá qué estructura elimina el factor de más: set, prefix, bisect, heap.<br>
+    5 · Recién al final aplicá los trucos de la sección 19.</p>
+  </div>
+</section>
+
+</div>
+
+</body>
+</html>
