@@ -11,8 +11,21 @@ Todos resueltos en Python.
 | [TAP 2023](./TAP%202023) | Ejercicios de práctica | 5 |
 | [TAP 2024](./TAP%202024) | Ejercicios de práctica y de la competencia | 6 |
 | [TAP 2025](./TAP%202025) | Ejercicios de la competencia | 7 |
-| [TAP 2026](./TAP%202026) | Próxima edición — pendiente | 0 |
+| [TAP 2026](./TAP%202026) | Ejercicios de la competencia | 6 |
 | [ICPC Latin American Regional 2025-2026](./2025-2026%20ICPC%20Latin%20American%20Regional%20Programming%20Contest) | Regional latinoamericano | 2 |
+
+## TAP 2026
+
+Los archivos de esta edición todavía no tienen el título del problema en el nombre:
+
+| Problema | Archivo | Estado |
+|----------|---------|--------|
+| A | [A.py](./TAP%202026/A.py) | Funciona |
+| B | [B (version 1 - no anda).py](./TAP%202026/B%20(version%201%20-%20no%20anda).py) | No anda |
+| B | [B (version 2 - no anda).py](./TAP%202026/B%20(version%202%20-%20no%20anda).py) | No anda |
+| C | [C.py](./TAP%202026/C.py) | Funciona |
+| I | [I.py](./TAP%202026/I.py) | Funciona |
+| K | [K.py](./TAP%202026/K.py) | Funciona |
 
 ## Chuletario
 
@@ -37,8 +50,11 @@ y trampas frecuentes.
 
 Cada archivo se llama `<Letra> - <Título del problema>.py` y empieza con un comentario
 indicando el problema al que corresponde. Las soluciones que quedaron incompletas o que
-no pasan todos los casos están marcadas en el nombre del archivo, igual que las
-resoluciones alternativas de un mismo problema.
+no pasan todos los casos se marcan con `(no anda)` en el nombre, y las resoluciones
+alternativas de un mismo problema llevan el número de versión.
+
+Los archivos de 2026 por ahora usan solo la letra del problema (`A.py`, `C.py`, ...)
+porque todavía no les puse el título.
 
 ## Contacto
 
