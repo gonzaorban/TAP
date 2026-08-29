@@ -14,19 +14,6 @@ Todos resueltos en Python.
 | [TAP 2026](./TAP%202026) | Ejercicios de la competencia | 6 |
 | [ICPC Latin American Regional 2025-2026](./2025-2026%20ICPC%20Latin%20American%20Regional%20Programming%20Contest) | Regional latinoamericano | 2 |
 
-## TAP 2026
-
-Los archivos de esta edición todavía no tienen el título del problema en el nombre:
-
-| Problema | Archivo | Estado |
-|----------|---------|--------|
-| A | [A.py](./TAP%202026/A.py) | Funciona |
-| B | [B (version 1 - no anda).py](./TAP%202026/B%20(version%201%20-%20no%20anda).py) | No anda |
-| B | [B (version 2 - no anda).py](./TAP%202026/B%20(version%202%20-%20no%20anda).py) | No anda |
-| C | [C.py](./TAP%202026/C.py) | Funciona |
-| I | [I.py](./TAP%202026/I.py) | Funciona |
-| K | [K.py](./TAP%202026/K.py) | Funciona |
-
 ## Chuletario
 
 Machete de Python para competencias, pensado para imprimir y llevar impreso:
