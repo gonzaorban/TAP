@@ -10,8 +10,8 @@ Todos resueltos en Python.
 |---------|-------------|----------|
 | [TAP 2023](./TAP%202023) | Ejercicios de práctica | 5 |
 | [TAP 2024](./TAP%202024) | Ejercicios de práctica y de la competencia | 6 |
-| [TAP 2025](./TAP%202025) | Ejercicios de la competencia | 7 |
-| [TAP 2026](./TAP%202026) | Ejercicios de la competencia | 6 |
+| [TAP 2025](./TAP%202025) | Ejercicios de la competencia | 6 |
+| [TAP 2026](./TAP%202026) | Ejercicios de la competencia | 5 |
 | [ICPC Latin American Regional 2025-2026](./2025-2026%20ICPC%20Latin%20American%20Regional%20Programming%20Contest) | Regional latinoamericano | 2 |
 
 ## Imprimible
