@@ -14,9 +14,9 @@ Todos resueltos en Python.
 | [TAP 2026](./TAP%202026) | Ejercicios de la competencia | 6 |
 | [ICPC Latin American Regional 2025-2026](./2025-2026%20ICPC%20Latin%20American%20Regional%20Programming%20Contest) | Regional latinoamericano | 2 |
 
-## Chuletario
+## Imprimible
 
-Machete de Python para competencias, pensado para imprimir y llevar impreso:
+Funcionamiento de Python para competencias, pensado para imprimir y llevar impreso:
 [HTML](./Formulas%20Python%20-%20Big%20Brain.html) · [PDF](./Formulas%20Python%20-%20Big%20Brain.pdf)
 
 Cubre entrada/salida, complejidades, estructuras (listas, diccionarios, sets, heap, deque),
