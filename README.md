@@ -40,9 +40,6 @@ indicando el problema al que corresponde. Las soluciones que quedaron incompleta
 no pasan todos los casos se marcan con `(no anda)` en el nombre, y las resoluciones
 alternativas de un mismo problema llevan el número de versión.
 
-Los archivos de 2026 por ahora usan solo la letra del problema (`A.py`, `C.py`, ...)
-porque todavía no les puse el título.
-
 ## Contacto
 
 Mi perfil en Codeforces: https://codeforces.com/profile/gonzaorban
