@@ -31,7 +31,7 @@ y trampas frecuentes.
 | 2023 | [PDF](https://codeforces.com/gym/104603/attachments/download/22130/TAP_2023_es.pdf) | [Página](https://codeforces.com/gym/104603) |
 | 2024 | [PDF](https://codeforces.com/gym/105321/attachments/download/26905/tap_2024.pdf) | [Página](https://codeforces.com/gym/105321) |
 | 2025 | [PDF](https://codeforces.com/gym/106054/attachments/download/32938/tap-simple-faz.pdf) | [Página](https://codeforces.com/gym/106054) |
-| 2026 | Pendiente | Pendiente |
+| 2026 | [PDF](https://codeforces.com/gym/106682/attachments/download/39252/TAP-2026.pdf) | [Página](https://codeforces.com/gym/106682) |
 
 ## Organización
 
