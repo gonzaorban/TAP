@@ -1,18 +1,19 @@
-# TAP
+# ICPC - TAP
 
-Ejercicios del **TAP** (Torneo Argentino de Programación) y de otras competencias relacionadas.
-Recopilé algunos ejercicios que hicimos para practicar y otros de los que nos tocaron en las competencias.
-Todos resueltos en Python.
+Ejercicios del **ICPC** (International Collegiate
+Programming Contest) y del **TAP** (Torneo Argentino de Programación).
+Recopilé algunos ejercicios que hicimos para practicar y otros que resolvimos en las competencias.
+Todos en Python.
 
 ## Contenido
 
-| Carpeta | Descripción | Archivos |
-|---------|-------------|----------|
-| [TAP 2023](./TAP%202023) | Ejercicios de práctica | 5 |
-| [TAP 2024](./TAP%202024) | Ejercicios de práctica y de la competencia | 6 |
-| [TAP 2025](./TAP%202025) | Ejercicios de la competencia | 6 |
-| [TAP 2026](./TAP%202026) | Ejercicios de la competencia | 5 |
-| [ICPC Latin American Regional 2025-2026](./2025-2026%20ICPC%20Latin%20American%20Regional%20Programming%20Contest) | Regional latinoamericano | 2 |
+| Carpeta | Ejercicios |
+|---------|----------|
+| [TAP 2023](./TAP%202023) | 5 |
+| [TAP 2024](./TAP%202024) | 6 |
+| [TAP 2025](./TAP%202025) | 6 |
+| [TAP 2026](./TAP%202026) | 5 |
+| [ICPC Latin American Regional 2025-2026](./2025-2026%20ICPC%20Latin%20American%20Regional%20Programming%20Contest) | 2 |
 
 ## Imprimible
 
